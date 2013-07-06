@@ -50,7 +50,7 @@
         list-style: none;
     }
 
-    nav.drawer {
+    .drawer {
         -webkit-overflow-scrolling: touch;
         overflow-y: auto;
         position:relative;
@@ -58,8 +58,16 @@
         list-style:none;
         color:#002E40;
         height:100%;
+        /*padding-left: 10px;*/
     }
 
+    .drawer p {
+        margin-left:10px;
+    }
+
+    .footer {
+        border-top: 1px solid #2A5769;
+    }
     .content {
     }
 
@@ -74,7 +82,7 @@
     }
 
     .icon {
-        font-size: 2.5em;
+        font-size: 2.7em;
         text-align: center;
         line-height: .5em;
         border-bottom: 1px solid #FABD4A;
@@ -101,11 +109,33 @@
                 <li>Item 2</li>
                 <li>Item 3</li>
             </ul>
-            Created by Brenda Jin @cyberneticlove
+            <div class="footer">
+                <p>Created by Brenda Jin, MIT License</p>
+                <p>
+                    <div aria-hidden="true" data-icon="&#xe002;"></div>
+                    <div aria-hidden="true" data-icon="&#xe003;"></div>
+                    <div aria-hidden="true" data-icon="&#xe004;"></div>
+                </p>
+            </div>
         </div>
         <div id="drag-handle">
             <div class="icon" aria-hidden="true" data-icon="&#xe000;">
                 <span class="icon-label">Home</span>
+            </div>
+            <div class="icon" aria-hidden="true" data-icon="&#xe001;">
+                <span class="icon-label">Home</span>
+            </div>
+            <div class="icon" aria-hidden="true" data-icon="&#xe005;">
+                <span class="icon-label">Web</span>
+            </div>
+            <div class="icon" aria-hidden="true" data-icon="&#xe007;">
+                <span class="icon-label">Share</span>
+            </div>
+            <div class="icon" aria-hidden="true" data-icon="&#xe008;">
+                <span class="icon-label">Docs</span>
+            </div>
+            <div class="icon" aria-hidden="true" data-icon="&#xe009;">
+                <span class="icon-label">Info</span>
             </div>
         </div>
     </nav>

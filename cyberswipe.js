@@ -27,6 +27,8 @@ Cyberswipe.prototype = {
             self.nav.style.width = self.drawerWidth + 'px';
             self.nav.style.left = self.drawerWidth * -1 + self.handleWidth + 'px';
 
+            self.nav.children[0].style.width = self.drawerWidth - self.handleWidth + 'px'
+
             self.contentElement.style.marginLeft = self.handleWidth + 10 + 'px';
 
             // Add transition end event listener once, so that case open() or close() animation transitions do not interfere with dragging animation

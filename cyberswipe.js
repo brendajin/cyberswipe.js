@@ -1,6 +1,7 @@
 var Cyberswipe = Cyberswipe || function(options) {
     // Manage scope
     var self = this;
+
     // Add user-selected options, or fall back to defaults
     this.drawerWidth =  options.drawerWidth || 250;
     this.handleWidth = options.handleWidth || 60;
@@ -9,9 +10,11 @@ var Cyberswipe = Cyberswipe || function(options) {
     this.closeThreshold = options.drawerWidth - options.threshold || this.drawerWidth - this.threshold;
     this.dragElement = options.dragElement || document.getElementById('drag-handle');
     this.nav = options.nav || document.getElementsByTagName('nav')[0];
+    this.contentElement = options.contentElement || document.getElementsByClassName('content')[0];
+    this.pushContent = options.pushContent || false;
 
     // Make the navigation
-    this.utils.makeNav(self, this.drawerWidth, this.handleWidth, this.nav);
+    this.utils.makeNav(self);
 }
 
 Cyberswipe.prototype = {
@@ -20,20 +23,24 @@ Cyberswipe.prototype = {
         hasWebkit: function(nav) {
             return nav.style.hasOwnProperty('webkitTransition');
         },
-        makeNav: function(self,drawerWidth,handleWidth,nav) {
+        makeNav: function(self) {
             // Draw the nav
-            nav.style.width = drawerWidth + 'px';
-            nav.style.left = drawerWidth * -1 + handleWidth + 'px';
+            self.nav.style.width = self.drawerWidth + 'px';
+            self.nav.style.left = self.drawerWidth * -1 + self.handleWidth + 'px';
+
+            self.contentElement.style.marginLeft = self.handleWidth + 10 + 'px';
 
             // Add transition end event listener once, so that case open() or close() animation transitions do not interfere with dragging animation
-            if(this.hasWebkit(nav)) {
-                nav.addEventListener('webkitTransitionEnd',function() {
-                    nav.classList.remove('transition');
+            if(this.hasWebkit(self.nav)) {
+                self.nav.addEventListener('webkitTransitionEnd',function() {
+                    self.nav.classList.remove('transition');
+                    self.contentElement.classList.remove('transition');
                 })
             }
             else {
-                nav.addEventListener('transitionend',function() {
-                    nav.classList.remove('transition');
+                self.nav.addEventListener('transitionend',function() {
+                    self.nav.classList.remove('transition');
+                    self.contentElement.classList.remove('transition');
                 })
             }            
             // Add native JS event listeners            

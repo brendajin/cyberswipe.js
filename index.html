@@ -12,59 +12,75 @@
         padding: 0;
         width: 100%;
         height: 100%;
-        overflow: hidden;
+        /*overflow: hidden;*/
+        background-color: #FFFFFF;
+        color: #002E40;
     }
 
     nav {
         position:fixed;
         top: 0;
         height:100%;
-        background-color: black;
-
-        -webkit-overflow-scrolling: touch;
-
-        overflow-y: auto;
+        background-color:#FABD4A;
+        overflow:hidden;
     }
 
-    nav::-webkit-scrollbar {  
+    /*nav ul::-webkit-scrollbar {  
             display: none;
-    }
+    }*/
 
     nav ul {
-        width:190px;
+        /*width:190px;
         height:100%;
         position: relative;
         top: 0;
-        margin: 0;
+        margin: 0;*/
         list-style: none;
-        background:gray;
+        /*color: #002E40;*/
     }
+
+    nav.drawer {
+        -webkit-overflow-scrolling: touch;
+        overflow-y: auto;
+        position:relative;
+        top:0;
+        list-style:none;
+        color:#002E40;
+        height:100%;
+    }
+
     .content {
-        margin-left:60px;
     }
+
     #drag-handle {
         position: absolute;
         top: 0;
         right: 0;
         width: 60px;
         height: 100%;
-        background:black;
+        background-color: #2A5769;
+        color: #FA9600;
         z-index:3;
     }
+
     .transition {
         -webkit-transition:all 1.0s ease-in-out;
         -moz-transition:all 1.0s ease-in-out;
         -o-transition:all 1.0s ease-in-out;
         transition:all 1.0s ease-in-out;
     }
+
     </style>
 <body>
     <nav>
-        <ul>
-            <li>Item 1</li>
-            <li>Item 2</li>
-            <li>Item 3</li>
-        </ul>
+        <div class="drawer">
+            <ul>
+                <li>Item 1</li>
+                <li>Item 2</li>
+                <li>Item 3</li>
+            </ul>
+            Created by Brenda Jin @cyberneticlove
+        </div>
         <div id="drag-handle">
         </div>
     </nav>
@@ -74,7 +90,7 @@
 
     <script src="cyberswipe.js"></script>
     <script>
-    var mySwiper = new Cyberswipe({});
+    var mySwiper = new Cyberswipe({pushContent:true});
     </script>
 </body>
 </html>

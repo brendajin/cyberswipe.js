@@ -8,7 +8,7 @@ var Cyberswipe = Cyberswipe || function(options) {
     this.threshold = options.threshold || 50;
     this.openThreshold = options.threshold || this.threshold;
     this.closeThreshold = options.drawerWidth - options.threshold || this.drawerWidth - this.threshold;
-    this.dragElement = options.dragElement || document.getElementById('do-drag');
+    this.dragElement = options.dragElement || document.getElementById('drag-handle');
     this.nav = options.nav || document.getElementsByTagName('nav')[0];
 
     // Make the navigation
@@ -142,9 +142,3 @@ Cyberswipe.prototype = {
         }
     }
 }
-
-var mySwiper = new Cyberswipe({
-    drawerWidth:250,
-    threshold: 25,    
-    dragElement:document.getElementById('do-drag')
-});

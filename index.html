@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Cyberswipe.js</title>
+    <style>
+
+    html, body {
+        font-family: sans-serif;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    nav {
+        position:fixed;
+        top: 0;
+        height:100%;
+        background-color: black;
+
+        -webkit-overflow-scrolling: touch;
+
+        overflow-y: auto;
+        overflow-x:hidden;
+    }
+    nav::-webkit-scrollbar {  
+            display: none;
+    }
+    nav ul {
+        width:190px;
+        position: relative;
+        top: 0;
+        padding: 0 0 36px 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    #drag-handle {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 60px;
+        height: 100%;
+        background:black;
+        z-index:3;
+    }
+
+    </style>
+<body>
+    <nav>
+        <ul>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ul>
+        <div id="do-drag">
+        </div>
+    </nav>
+
+
+    <script src="/cyberswipe.js"></script>
+    <script>
+    var mySwiper = new Cyberswipe();
+    </script>
+</body>
+</html>

@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Cyberswipe.js</title>
+    <script src="tap.js"></script>
     <style>
         @font-face {
             font-family: 'icomoon';
@@ -71,7 +72,9 @@
         }
         .content {
         }
-
+        .hide {
+            display:none;
+        }
         #drag-handle {
             position: absolute;
             top: 0;
@@ -81,16 +84,6 @@
             background-color: #2A5769;
             color: #FABD4A;
         }
-        /*.social {
-            font-size: 2em;
-            text-align: center;
-            padding: .1em;
-            margin: 10px 12px;
-            float:left;
-        }
-        .social a {
-            color: #002E40;
-        }*/
         .icon {
             font-size: 2.7em;
             text-align: center;
@@ -122,19 +115,16 @@
             </ul>
             <div class="footer">
                 <p>Authored by Brenda Jin, <a href="http://opensource.org/licenses/MIT">MIT License</a> 2013</p>
-                <!-- <a class="social"  href="https://github.com/brendajin/cyberswipe.js"><div aria-hidden="true" data-icon="&#xe002;"></div></a>
-                <a href="https://twitter.com/cyberneticlove"><div class="social" aria-hidden="true" data-icon="&#xe003;"></div></a>
-                <a href="https://plus.google.com/109361537721644014010/posts"><div class="social" aria-hidden="true" data-icon="&#xe004;"></div></a> -->
             </div>
         </div>
         <div id="drag-handle">
-            <div class="icon" aria-hidden="true" data-icon="&#xe000;">
+            <div toggle="home" class="icon" aria-hidden="true" data-icon="&#xe000;">
                 <span class="icon-label">Home</span>
             </div>
-            <div class="icon" aria-hidden="true" data-icon="&#xe008;">
+            <div toggle="docs" class="icon" aria-hidden="true" data-icon="&#xe008;">
                 <span class="icon-label">Docs</span>
             </div>
-            <div class="icon" aria-hidden="true" data-icon="&#xe001;">
+            <div toggle="helper" class="icon" aria-hidden="true" data-icon="&#xe001;">
                 <span class="icon-label">Helper</span>
             </div>
         </div>
@@ -142,32 +132,65 @@
     <div class="content">
         <h1>Cyberswipe.js</h1>
         <h2>A Microlibrary for Swipeable Drawer Navigation</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dapibus turpis vitae elementum blandit. Aliquam lobortis nisl ut interdum bibendum. Morbi ut elit eu enim auctor commodo in ac ante. Sed quis tortor a dolor lobortis suscipit. Nunc viverra lacus aliquam magna iaculis hendrerit sed interdum metus. Morbi dictum velit nisi, nec porttitor diam accumsan vitae. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+        <div id="home">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dapibus turpis vitae elementum blandit. Aliquam lobortis nisl ut interdum bibendum. Morbi ut elit eu enim auctor commodo in ac ante. Sed quis tortor a dolor lobortis suscipit. Nunc viverra lacus aliquam magna iaculis hendrerit sed interdum metus. Morbi dictum velit nisi, nec porttitor diam accumsan vitae. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
 
-        <p>Sed hendrerit consectetur nibh in ornare. Aenean quis nunc nibh. Integer interdum commodo velit iaculis elementum. Morbi egestas, risus sit amet laoreet vestibulum, felis nunc aliquam mauris, vitae lacinia lectus eros vel nibh. Quisque quis augue vitae lacus blandit lacinia a et velit. Vivamus nec turpis nisl. Duis imperdiet porta nisi id accumsan. Ut dignissim, est ut ullamcorper lobortis, purus ante aliquet diam, ut tempus turpis augue vitae dolor.</p>
+            <p>Sed hendrerit consectetur nibh in ornare. Aenean quis nunc nibh. Integer interdum commodo velit iaculis elementum. Morbi egestas, risus sit amet laoreet vestibulum, felis nunc aliquam mauris, vitae lacinia lectus eros vel nibh. Quisque quis augue vitae lacus blandit lacinia a et velit. Vivamus nec turpis nisl. Duis imperdiet porta nisi id accumsan. Ut dignissim, est ut ullamcorper lobortis, purus ante aliquet diam, ut tempus turpis augue vitae dolor.</p>
 
-        <p>Duis iaculis mauris sed auctor laoreet. Praesent posuere, est ac gravida interdum, dui mauris imperdiet lorem, sodales ullamcorper ante eros vitae est. Cras sodales felis ipsum, eget volutpat lectus sodales quis. Ut accumsan neque felis, vitae imperdiet neque egestas nec. Vestibulum varius magna a metus lobortis consequat. Morbi rutrum feugiat lectus, at accumsan ipsum ultrices non. Suspendisse facilisis diam sit amet dui condimentum egestas. Aenean lobortis aliquam ullamcorper. Fusce eget justo sit amet enim ultricies rhoncus. Phasellus pharetra enim nisi, placerat convallis diam blandit vitae. Maecenas bibendum ante et eleifend adipiscing. Donec a dolor vulputate, tincidunt augue at, gravida mi.</p>
+            <p>Duis iaculis mauris sed auctor laoreet. Praesent posuere, est ac gravida interdum, dui mauris imperdiet lorem, sodales ullamcorper ante eros vitae est. Cras sodales felis ipsum, eget volutpat lectus sodales quis. Ut accumsan neque felis, vitae imperdiet neque egestas nec. Vestibulum varius magna a metus lobortis consequat. Morbi rutrum feugiat lectus, at accumsan ipsum ultrices non. Suspendisse facilisis diam sit amet dui condimentum egestas. Aenean lobortis aliquam ullamcorper. Fusce eget justo sit amet enim ultricies rhoncus. Phasellus pharetra enim nisi, placerat convallis diam blandit vitae. Maecenas bibendum ante et eleifend adipiscing. Donec a dolor vulputate, tincidunt augue at, gravida mi.</p>
 
-        <p>Morbi pulvinar vulputate purus, eget iaculis libero sodales ac. Praesent tellus velit, volutpat non faucibus ut, iaculis non dolor. Vestibulum eros est, hendrerit id aliquet vel, luctus eget quam. Nam faucibus ipsum diam, at dignissim ante tempus vel. Phasellus a purus id diam tincidunt accumsan ac et nunc. In pretium sem nunc, vitae pharetra est tempus interdum. Mauris in molestie sapien.</p>
+            <p>Morbi pulvinar vulputate purus, eget iaculis libero sodales ac. Praesent tellus velit, volutpat non faucibus ut, iaculis non dolor. Vestibulum eros est, hendrerit id aliquet vel, luctus eget quam. Nam faucibus ipsum diam, at dignissim ante tempus vel. Phasellus a purus id diam tincidunt accumsan ac et nunc. In pretium sem nunc, vitae pharetra est tempus interdum. Mauris in molestie sapien.</p>
 
-        <p>Maecenas interdum mattis mauris, viverra sollicitudin dolor condimentum in. Curabitur tempus malesuada lectus a sodales. Ut pulvinar ullamcorper nunc sed malesuada. Phasellus vitae dui neque. Quisque ut sem in velit feugiat bibendum. Vivamus et sapien id est tincidunt gravida. Sed tincidunt a odio at facilisis. Proin a nisi lacus. Maecenas ipsum dui, sollicitudin sed hendrerit ut, adipiscing id ante. Etiam ac pellentesque eros, nec lacinia magna. Maecenas vitae feugiat leo. Sed nec sagittis orci. Cras accumsan sed mauris sit amet tempor. Vivamus consectetur nibh nulla. Donec ut dolor dolor.</p>
+            <p>Maecenas interdum mattis mauris, viverra sollicitudin dolor condimentum in. Curabitur tempus malesuada lectus a sodales. Ut pulvinar ullamcorper nunc sed malesuada. Phasellus vitae dui neque. Quisque ut sem in velit feugiat bibendum. Vivamus et sapien id est tincidunt gravida. Sed tincidunt a odio at facilisis. Proin a nisi lacus. Maecenas ipsum dui, sollicitudin sed hendrerit ut, adipiscing id ante. Etiam ac pellentesque eros, nec lacinia magna. Maecenas vitae feugiat leo. Sed nec sagittis orci. Cras accumsan sed mauris sit amet tempor. Vivamus consectetur nibh nulla. Donec ut dolor dolor.</p>
 
-        <p>Maecenas cursus cursus diam. In metus mi, commodo vel felis in, suscipit mattis mi. Pellentesque adipiscing, eros vel luctus feugiat, nibh justo euismod sapien, quis convallis quam odio vitae odio. Vestibulum in mi pellentesque, mollis dolor quis, mattis magna. Vivamus pharetra tincidunt lacus, non dignissim massa vestibulum congue. Donec facilisis dui ut nibh consectetur, ultrices mollis est elementum. Sed ultricies mi nec molestie rhoncus. Proin in lorem augue. Suspendisse nisl urna, vestibulum non libero a, luctus laoreet metus. Nunc dapibus massa ac urna rhoncus, et viverra elit tempor. Donec dictum metus sit amet massa bibendum, non feugiat purus vulputate. Praesent vitae ante vitae elit placerat dignissim at sed lectus. Nullam molestie pulvinar purus, eu semper massa venenatis ac.</p>
+            <p>Maecenas cursus cursus diam. In metus mi, commodo vel felis in, suscipit mattis mi. Pellentesque adipiscing, eros vel luctus feugiat, nibh justo euismod sapien, quis convallis quam odio vitae odio. Vestibulum in mi pellentesque, mollis dolor quis, mattis magna. Vivamus pharetra tincidunt lacus, non dignissim massa vestibulum congue. Donec facilisis dui ut nibh consectetur, ultrices mollis est elementum. Sed ultricies mi nec molestie rhoncus. Proin in lorem augue. Suspendisse nisl urna, vestibulum non libero a, luctus laoreet metus. Nunc dapibus massa ac urna rhoncus, et viverra elit tempor. Donec dictum metus sit amet massa bibendum, non feugiat purus vulputate. Praesent vitae ante vitae elit placerat dignissim at sed lectus. Nullam molestie pulvinar purus, eu semper massa venenatis ac.</p>
 
-        <p>Nam nec laoreet est. Nunc gravida ultrices lobortis. Phasellus eu magna convallis, ultricies velit eget, lobortis metus. Donec mollis metus et scelerisque mollis. Aliquam dapibus laoreet porttitor. Quisque mattis eu sapien eu interdum. Aliquam ac lorem dui. Suspendisse porta libero ut blandit hendrerit. Vestibulum ac ante non odio tincidunt semper eu quis eros. Curabitur mattis eros leo, et cursus leo pretium vel. Donec sapien lectus, euismod sit amet lacinia blandit, hendrerit et enim. Sed in nulla cursus, molestie tellus a, placerat ante. Morbi vel cursus est. Morbi id massa eu dui consequat pellentesque. Quisque imperdiet rhoncus risus sit amet ultricies.</p>
+            <p>Nam nec laoreet est. Nunc gravida ultrices lobortis. Phasellus eu magna convallis, ultricies velit eget, lobortis metus. Donec mollis metus et scelerisque mollis. Aliquam dapibus laoreet porttitor. Quisque mattis eu sapien eu interdum. Aliquam ac lorem dui. Suspendisse porta libero ut blandit hendrerit. Vestibulum ac ante non odio tincidunt semper eu quis eros. Curabitur mattis eros leo, et cursus leo pretium vel. Donec sapien lectus, euismod sit amet lacinia blandit, hendrerit et enim. Sed in nulla cursus, molestie tellus a, placerat ante. Morbi vel cursus est. Morbi id massa eu dui consequat pellentesque. Quisque imperdiet rhoncus risus sit amet ultricies.</p>
 
-        <p>Ut aliquam, lectus a sagittis pulvinar, lacus massa ultrices leo, congue pharetra eros risus non diam. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras quis enim viverra, adipiscing tellus non, mattis mi. Donec ac augue sed lectus egestas dignissim. Suspendisse egestas augue nibh, ut hendrerit leo vulputate vel. Suspendisse mattis ultricies sodales. Aenean non interdum ante. Aliquam auctor rutrum mattis. Etiam lacinia, mauris quis tristique porttitor, magna magna pharetra leo, id sagittis magna nibh eu dui.</p>
+            <p>Ut aliquam, lectus a sagittis pulvinar, lacus massa ultrices leo, congue pharetra eros risus non diam. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras quis enim viverra, adipiscing tellus non, mattis mi. Donec ac augue sed lectus egestas dignissim. Suspendisse egestas augue nibh, ut hendrerit leo vulputate vel. Suspendisse mattis ultricies sodales. Aenean non interdum ante. Aliquam auctor rutrum mattis. Etiam lacinia, mauris quis tristique porttitor, magna magna pharetra leo, id sagittis magna nibh eu dui.</p>
 
-        <p>Fusce vulputate enim eu turpis rhoncus mollis. Etiam eu accumsan odio, cursus suscipit sapien. Morbi eu semper dui, eget posuere ante. Fusce nulla nunc, suscipit pretium interdum et, tristique sit amet justo. Donec nec mauris eu libero tincidunt feugiat eget ac orci. Suspendisse iaculis, odio ut lobortis tempus, libero quam vulputate ligula, vitae gravida tellus mauris pellentesque felis. Sed interdum justo sodales eros rutrum, ac aliquam risus euismod.</p>
+            <p>Fusce vulputate enim eu turpis rhoncus mollis. Etiam eu accumsan odio, cursus suscipit sapien. Morbi eu semper dui, eget posuere ante. Fusce nulla nunc, suscipit pretium interdum et, tristique sit amet justo. Donec nec mauris eu libero tincidunt feugiat eget ac orci. Suspendisse iaculis, odio ut lobortis tempus, libero quam vulputate ligula, vitae gravida tellus mauris pellentesque felis. Sed interdum justo sodales eros rutrum, ac aliquam risus euismod.</p>
 
-        <p>Nullam ut volutpat elit. Nullam sed sapien id sapien auctor pretium. Aenean non ultrices nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean non ante venenatis, accumsan lorem vitae, facilisis justo. Nam laoreet eu metus ullamcorper eleifend. Ut id sem et nunc sodales fringilla. Nam et eros eu odio gravida vulputate. Phasellus vitae ante ac lorem pulvinar dignissim a nec mi. Donec placerat felis non lacus porttitor volutpat. Fusce sit amet ultricies magna. Integer mollis malesuada dui, sed aliquet neque dignissim a. Cras congue lacus enim, vel blandit purus varius ut. Donec justo magna, consequat at dictum ac, ullamcorper ut turpis.</p>
-    </div>
+            <p>Nullam ut volutpat elit. Nullam sed sapien id sapien auctor pretium. Aenean non ultrices nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean non ante venenatis, accumsan lorem vitae, facilisis justo. Nam laoreet eu metus ullamcorper eleifend. Ut id sem et nunc sodales fringilla. Nam et eros eu odio gravida vulputate. Phasellus vitae ante ac lorem pulvinar dignissim a nec mi. Donec placerat felis non lacus porttitor volutpat. Fusce sit amet ultricies magna. Integer mollis malesuada dui, sed aliquet neque dignissim a. Cras congue lacus enim, vel blandit purus varius ut. Donec justo magna, consequat at dictum ac, ullamcorper ut turpis.</p>
+        </div>
+        <div id="docs" class="hide">
+            <p>Some docs would go here</p>
+        </div>
+        <div id="helper" class="hide">
+            <p>A helper wizard would go here</p>
+        </div>
 
     <script src="cyberswipe.js"></script>
     <script>
 
         var mySwiper = new Cyberswipe({pushContent:true});
-    
+        
+        (function addLinks() {
+            for (var i = 0; i < document.getElementsByClassName('icon').length; i++) {
+                el = document.getElementsByClassName('icon')[i];
+
+                var thisTap = "tap" + i;
+                console.log(thisTap);
+                thisTap = new Tap (el);
+
+                el.addEventListener('tap', function(e) {
+                    console.log(el + 'was tapped',e.target.getAttribute('toggle'));
+                    toggleViews(document.getElementsByClassName('icon'),this);
+                    // var toggleElement = el.getAttribute('toggle');
+                    // document.getElementById(toggleElement).classList.toggle('hide');  
+                })
+            }
+        })();
+
+        var toggleViews = function(views,show) {
+            console.log(views,show);
+            for (var i = 0; i < views.length; i++) {
+                document.getElementById(views[i].getAttribute('toggle')).classList.add('hide');
+            }
+            document.getElementById(show.getAttribute('toggle')).classList.remove('hide');
+        }
+
+
     </script>
 </body>
 </html>

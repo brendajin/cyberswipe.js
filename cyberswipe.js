@@ -1,7 +1,6 @@
 var Cyberswipe = Cyberswipe || function(options) {
     // Manage scope
     var self = this;
-
     // Add user-selected options, or fall back to defaults
     this.drawerWidth =  options.drawerWidth || 250;
     this.handleWidth = options.handleWidth || 60;

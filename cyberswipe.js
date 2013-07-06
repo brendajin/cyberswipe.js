@@ -11,7 +11,6 @@ var Cyberswipe = Cyberswipe || function(options) {
     this.dragElement = options.dragElement || document.getElementById('drag-handle');
     this.nav = options.nav || document.getElementsByTagName('nav')[0];
     this.contentElement = options.contentElement || document.getElementsByClassName('content')[0];
-    this.pushContent = options.pushContent || false;
 
     // Make the navigation
     this.utils.makeNav(self);

@@ -5,102 +5,113 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Cyberswipe.js</title>
     <style>
-    @font-face {
-        font-family: 'icomoon';
-        src:url('fonts/icomoon.eot');
-        src:url('fonts/icomoon.eot?#iefix') format('embedded-opentype'),
-            url('fonts/icomoon.woff') format('woff'),
-            url('fonts/icomoon.ttf') format('truetype'),
-            url('fonts/icomoon.svg#icomoon') format('svg');
-        font-weight: normal;
-        font-style: normal;
-    }
-    /* Use the following CSS code if you want to use data attributes for inserting your icons */
-    [data-icon]:before {
-        font-family: 'icomoon';
-        /*font-size:4em;*/
-        content: attr(data-icon);
-        speak: none;
-        font-weight: normal;
-        font-variant: normal;
-        text-transform: none;
-        line-height: 1;
-        -webkit-font-smoothing: antialiased;
-    }
-    html, body {
-        font-family: sans-serif;
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        height: 100%;
-        background-color: #FFFFFF;
-        color: #002E40;
-    }
+        @font-face {
+            font-family: 'icomoon';
+            src:url('fonts/icomoon.eot');
+            src:url('fonts/icomoon.eot?#iefix') format('embedded-opentype'),
+                url('fonts/icomoon.woff') format('woff'),
+                url('fonts/icomoon.ttf') format('truetype'),
+                url('fonts/icomoon.svg#icomoon') format('svg');
+            font-weight: normal;
+            font-style: normal;
+        }
+        /* Use the following CSS code if you want to use data attributes for inserting your icons */
+        [data-icon]:before {
+            font-family: 'icomoon';
+            /*font-size:4em;*/
+            content: attr(data-icon);
+            speak: none;
+            font-weight: normal;
+            font-variant: normal;
+            text-transform: none;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+        }
 
-    nav {
-        position:fixed;
-        top: 0;
-        height:100%;
-        background-color:#FABD4A;
-        overflow:hidden;
-        z-index:3;
-    }
+        html, body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #FFFFFF;
+            color: #002E40;
+        }
 
-    nav ul {
-        list-style: none;
-    }
+        nav {
+            position:fixed;
+            top: 0;
+            height:100%;
+            background-color:#FABD4A;
+            overflow:hidden;
+            z-index:3;
+        }
 
-    .drawer {
-        -webkit-overflow-scrolling: touch;
-        overflow-y: auto;
-        position:relative;
-        top:0;
-        list-style:none;
-        color:#002E40;
-        height:100%;
-        /*padding-left: 10px;*/
-    }
+        nav ul {
+            list-style: none;
+        }
 
-    .drawer p {
-        margin-left:10px;
-    }
+        .drawer {
+            -webkit-overflow-scrolling: touch;
+            overflow-y: auto;
+            position:relative;
+            top:0;
+            list-style:none;
+            color:#002E40;
+            height:100%;
+            /*padding-left: 10px;*/
+        }
 
-    .footer {
-        border-top: 1px solid #2A5769;
-    }
-    .content {
-    }
+        .drawer p {
+            margin-left:10px;
+        }
 
-    #drag-handle {
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 60px;
-        height: 100%;
-        background-color: #2A5769;
-        color: #FABD4A;
-    }
+        .footer {
+            border-top: 1px solid #2A5769;
+        }
+        .content {
+        }
 
-    .icon {
-        font-size: 2.7em;
-        text-align: center;
-        line-height: .5em;
-        border-bottom: 1px solid #FABD4A;
-        padding: .25em 0;    
-    }
+        #drag-handle {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60px;
+            height: 100%;
+            background-color: #2A5769;
+            color: #FABD4A;
+        }
+        /*.social {
+            font-size: 2em;
+            text-align: center;
+            padding: .1em;
+            margin: 10px 12px;
+            float:left;
+        }
+        .social a {
+            color: #002E40;
+        }*/
+        .icon {
+            font-size: 2.7em;
+            text-align: center;
+            line-height: .5em;
+            border-bottom: 1px solid #FABD4A;
+            padding: .25em 0;    
+        }
 
-    .icon-label {
-        font-size:.4em;
-    }
+        .icon-label {
+            font-size:.4em;
+        }
 
-    .transition {
-        -webkit-transition:all 1.0s ease-in-out;
-        -moz-transition:all 1.0s ease-in-out;
-        -o-transition:all 1.0s ease-in-out;
-        transition:all 1.0s ease-in-out;
-    }
+        .transition {
+            -webkit-transition:all 1.0s ease-in-out;
+            -moz-transition:all 1.0s ease-in-out;
+            -o-transition:all 1.0s ease-in-out;
+            transition:all 1.0s ease-in-out;
+        }
 
     </style>
+</head>
 <body>
     <nav>
         <div class="drawer">
@@ -110,32 +121,21 @@
                 <li>Item 3</li>
             </ul>
             <div class="footer">
-                <p>Created by Brenda Jin, MIT License</p>
-                <p>
-                    <div aria-hidden="true" data-icon="&#xe002;"></div>
-                    <div aria-hidden="true" data-icon="&#xe003;"></div>
-                    <div aria-hidden="true" data-icon="&#xe004;"></div>
-                </p>
+                <p>Authored by Brenda Jin, <a href="http://opensource.org/licenses/MIT">MIT License</a> 2013</p>
+                <!-- <a class="social"  href="https://github.com/brendajin/cyberswipe.js"><div aria-hidden="true" data-icon="&#xe002;"></div></a>
+                <a href="https://twitter.com/cyberneticlove"><div class="social" aria-hidden="true" data-icon="&#xe003;"></div></a>
+                <a href="https://plus.google.com/109361537721644014010/posts"><div class="social" aria-hidden="true" data-icon="&#xe004;"></div></a> -->
             </div>
         </div>
         <div id="drag-handle">
             <div class="icon" aria-hidden="true" data-icon="&#xe000;">
                 <span class="icon-label">Home</span>
             </div>
-            <div class="icon" aria-hidden="true" data-icon="&#xe001;">
-                <span class="icon-label">Home</span>
-            </div>
-            <div class="icon" aria-hidden="true" data-icon="&#xe005;">
-                <span class="icon-label">Web</span>
-            </div>
-            <div class="icon" aria-hidden="true" data-icon="&#xe007;">
-                <span class="icon-label">Share</span>
-            </div>
             <div class="icon" aria-hidden="true" data-icon="&#xe008;">
                 <span class="icon-label">Docs</span>
             </div>
-            <div class="icon" aria-hidden="true" data-icon="&#xe009;">
-                <span class="icon-label">Info</span>
+            <div class="icon" aria-hidden="true" data-icon="&#xe001;">
+                <span class="icon-label">Helper</span>
             </div>
         </div>
     </nav>
@@ -165,7 +165,9 @@
 
     <script src="cyberswipe.js"></script>
     <script>
-    var mySwiper = new Cyberswipe({pushContent:true});
+
+        var mySwiper = new Cyberswipe({pushContent:true});
+    
     </script>
 </body>
 </html>

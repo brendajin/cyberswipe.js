@@ -11,6 +11,7 @@ var Cyberswipe = Cyberswipe || function(options) {
     this.dragElement = options.dragElement || document.getElementById('drag-handle');
     this.nav = options.nav || document.getElementsByTagName('nav')[0];
     this.contentElement = options.contentElement || document.getElementsByClassName('content')[0];
+    this.contentMargin = options.contentMargin || 10;
 
     // Make the navigation
     this.utils.makeNav(self);
@@ -29,7 +30,8 @@ Cyberswipe.prototype = {
 
             self.nav.children[0].style.width = self.drawerWidth - self.handleWidth + 'px'
 
-            self.contentElement.style.marginLeft = self.handleWidth + 10 + 'px';
+            self.contentElement.style.marginLeft = self.handleWidth + self.contentMargin + 'px';
+            self.contentElement.style.marginRight = self.contentMargin + 'px';
 
             // Add transition end event listener once, so that case open() or close() animation transitions do not interfere with dragging animation
             if(this.hasWebkit(self.nav)) {

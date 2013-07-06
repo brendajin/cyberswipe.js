@@ -89,7 +89,7 @@
             text-align: center;
             line-height: .5em;
             border-bottom: 1px solid #FABD4A;
-            padding: .25em 0;    
+            padding: .5em 0 .4em 0;
         }
 
         .icon-label {
@@ -170,26 +170,20 @@
                 el = document.getElementsByClassName('icon')[i];
 
                 var thisTap = "tap" + i;
-                console.log(thisTap);
                 thisTap = new Tap (el);
 
                 el.addEventListener('tap', function(e) {
-                    console.log(el + 'was tapped',e.target.getAttribute('toggle'));
                     toggleViews(document.getElementsByClassName('icon'),this);
-                    // var toggleElement = el.getAttribute('toggle');
-                    // document.getElementById(toggleElement).classList.toggle('hide');  
                 })
             }
         })();
 
         var toggleViews = function(views,show) {
-            console.log(views,show);
             for (var i = 0; i < views.length; i++) {
                 document.getElementById(views[i].getAttribute('toggle')).classList.add('hide');
             }
             document.getElementById(show.getAttribute('toggle')).classList.remove('hide');
         }
-
 
     </script>
 </body>

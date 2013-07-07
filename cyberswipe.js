@@ -16,6 +16,9 @@ var Cyberswipe = Cyberswipe || function(options) {
     this.pushContent = options.pushContent || false;
     // Make the navigation
     this.utils.makeNav(self);
+
+    // Define norms based on current offsets
+    this.utils.defineNorms(self);
 }
 
 Cyberswipe.prototype = {
@@ -61,9 +64,13 @@ Cyberswipe.prototype = {
                 self.dragElement.addEventListener('dragend',function(e){self.utils.snap(e,self.nav,self.dragElement,self.drawerWidth,self.handleWidth,self.openThreshold,self.closeThreshold,self.pushContent,self.contentElement,self.contentContainer)});
             }
 
+            // Redefine norms if screen size or orientation change
+            window.addEventListener("orientationchange", function(e){self.utils.defineNorms(self);});
+            window.addEventListener("resize",function(e){self.utils.defineNorms(self)});
+        },
+        defineNorms: function(self){
             this.normalContentOffset = self.contentElement.offsetWidth;
             this.normalContainerOffset = self.contentContainer.offsetWidth;
-            console.log(this.normalContainerOffset,this.normalContentOffset);
         },
         onStart: function(x,pushContent,contentContainer,contentElement,drawerWidth){
             var stopScroll = this.preventDefault;
@@ -142,8 +149,6 @@ Cyberswipe.prototype = {
         snap: function(e,nav,dragElement,drawerWidth,handleWidth,openThreshold,closeThreshold,pushContent,contentElement,contentContainer) {
             var stopScroll = this.preventDefault;
             e.preventDefault();
-
-            console.log(this.normalContentOffset,this.normalContainerOffset);
 
             if(this.lastDirection=="right" && dragElement.getBoundingClientRect().left < openThreshold) {
                 nav.style.left = drawerWidth*-1 + handleWidth + 'px';

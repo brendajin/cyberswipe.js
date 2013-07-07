@@ -65,13 +65,21 @@ Cyberswipe.prototype = {
             // Add native JS event listeners            
             if(this.hasTouch) {
                 self.dragElement.addEventListener('touchstart',function(e){self.utils.onStart(e,self.pushContent,self.contentContainer,self.contentElement,self.drawerWidth)});
-                self.dragElement.addEventListener('touchmove',function(e){self.utils.drag(e,self.nav,self.dragElement,self.drawerWidth,self.handleWidth,self.pushContent,self.contentContainer)});
+                self.dragElement.addEventListener('touchmove',function(e){self.utils.drag(e,self.nav,self.dragElement,self.drawerWidth,self.handleWidth,self.pushContent,self.contentContainer,self.contentElement)});
                 self.dragElement.addEventListener('touchend',function(e){self.utils.snap(e,self.nav,self.dragElement,self.drawerWidth,self.handleWidth,self.openThreshold,self.closeThreshold,self.pushContent,self.contentElement,self.contentContainer)});
+                
+                self.navContent.addEventListener('touchstart',function(e){self.utils.defineScrollNorms;});
+                self.navContent.addEventListener('touchmove',function(e){self.utils.preventScroll(e);});
+                self.navContent.addEventListener('end',function(e){self.utils.preventScroll(e);});
             }
             else {
                 self.dragElement.addEventListener('dragstart',function(e){self.utils.onStart(e,self.pushContent,self.contentContainer,self.contentElement,self.drawerWidth)});
-                self.dragElement.addEventListener('dragmove',function(e){self.utils.drag(e,self.nav,self.dragElement, self.drawerWidth, self.handleWidth,self.pushContent,self.contentContainer)});
+                self.dragElement.addEventListener('dragmove',function(e){self.utils.drag(e,self.nav,self.dragElement, self.drawerWidth, self.handleWidth,self.pushContent,self.contentContainer,self.contentElement)});
                 self.dragElement.addEventListener('dragend',function(e){self.utils.snap(e,self.nav,self.dragElement,self.drawerWidth,self.handleWidth,self.openThreshold,self.closeThreshold,self.pushContent,self.contentElement,self.contentContainer)});
+                
+                self.navContent.addEventListener('dragstart',function(e){self.utils.defineScrollNorms();});
+                self.navContent.addEventListener('dragmove',function(e){self.utils.preventScroll(e);});
+                self.navContent.addEventListener('dragend',function(e){self.utils.preventScroll(e);});
             }
 
             // Redefine norms if screen size or orientation change
@@ -81,6 +89,10 @@ Cyberswipe.prototype = {
         defineNorms: function(self){
             this.normalContentOffset = self.contentElement.offsetWidth;
             this.normalContainerOffset = self.contentContainer.offsetWidth;
+        },
+        defineScrollNorms: function(){
+            this.scrollX = window.scrollX;
+            this.scrollY = window.scrollY;
         },
         onStart: function(x,pushContent,contentContainer,contentElement,drawerWidth){
             var stopScroll = this.preventDefault;
@@ -94,25 +106,29 @@ Cyberswipe.prototype = {
             if(pushContent) {
                 contentContainer.addEventListener('touchmove',stopScroll);
                 contentElement.style.width = contentElement.offsetWidth + 'px';
-                contentContainer.style.width = contentContainer.offsetWidth + drawerWidth + 'px';
+                // contentContainer.style.width = contentContainer.offsetWidth + drawerWidth + 'px';
             }
         },
         preventDefault: function(e){
             e.preventDefault();
         },
-        drag: function(e,nav,dragElement,drawerWidth,handleWidth,pushContent,contentContainer){
+        preventScroll: function(e) {
+            // console.log(this.scrollX,this.scrollY,'scrolling');
+            window.scrollTo(this.scrollX,this.scrollY);
+        },
+        drag: function(e,nav,dragElement,drawerWidth,handleWidth,pushContent,contentContainer,contentElement){
             e.preventDefault();
 
             this.lastX = this.currentX;
             this.currentX = e.pageX;
-            
+
             var direction = this.getDirection(this.lastX,this.currentX);
 
             if(direction === "right") {
-                this.moveRight(e.pageX,nav,dragElement,drawerWidth,handleWidth,pushContent,contentContainer);
+                this.moveRight(e.pageX,nav,dragElement,drawerWidth,handleWidth,pushContent,contentContainer,contentElement);
             }
             else {
-                this.moveLeft(e.pageX,this.startX,nav,dragElement,drawerWidth,handleWidth,pushContent,contentContainer)
+                this.moveLeft(e.pageX,this.startX,nav,dragElement,drawerWidth,handleWidth,pushContent,contentContainer,contentElement)
             }
         },
         getDirection: function (lastX, currentX) {
@@ -126,32 +142,29 @@ Cyberswipe.prototype = {
             this.lastDirection = direction;
             return direction;
         },
-        moveRight: function(x,nav,dragElement,drawerWidth,handleWidth,pushContent,contentContainer) {    
+        moveRight: function(x,nav,dragElement,drawerWidth,handleWidth,pushContent,contentContainer,contentElement) {    
             if(x > this.drawerWidth) {
-                nav.style.left = 0 + 'px';
-                pushContent ? contentContainer.style.marginLeft = drawerWidth + 'px' : null;
+
+                this.open(nav,pushContent,contentContainer,drawerWidth);
             }
             if(parseInt(dragElement.getBoundingClientRect().left)<x && dragElement.getBoundingClientRect().right < drawerWidth) {
                 nav.style.left = x - drawerWidth + dragElement.offsetWidth/2 + 'px';
                 pushContent ? contentContainer.style.marginLeft = x + dragElement.offsetWidth/2 + 'px' : null;
             }
             else {
-                nav.style.left = 0 + 'px';
-                pushContent ? contentContainer.style.marginLeft = drawerWidth + 'px' : null;
+                this.open(nav,pushContent,contentContainer,drawerWidth);
             }
         },
-        moveLeft: function(x,startX,nav,dragElement,drawerWidth,handleWidth,pushContent,contentContainer) {
+        moveLeft: function(x,startX,nav,dragElement,drawerWidth,handleWidth,pushContent,contentContainer,contentElement) {
             if (x + dragElement.offsetWidth/2 > drawerWidth) {
-                nav.style.left = drawerWidth*-1 + handleWidth + 'px';
-                pushContent ? contentContainer.style.marginLeft = handleWidth + 'px' : null;
+                this.close(nav,pushContent,contentContainer,contentElement,drawerWidth,handleWidth,this.preventDefault);
             }
             else if (dragElement.getBoundingClientRect().left > 0 && x < drawerWidth) {
                 nav.style.left = x - drawerWidth + dragElement.offsetWidth/2 + 'px';
                 pushContent ? contentContainer.style.marginLeft = x + dragElement.offsetWidth/2 + 'px' : null;
             }
             else {
-                nav.style.left = drawerWidth*-1 + handleWidth + 'px';
-                pushContent ? contentContainer.style.marginLeft = handleWidth + 'px' : null;
+                this.close(nav,pushContent,contentContainer,contentElement,drawerWidth,handleWidth,this.preventDefault);
             }
         },
         snap: function(e,nav,dragElement,drawerWidth,handleWidth,openThreshold,closeThreshold,pushContent,contentElement,contentContainer) {
@@ -159,7 +172,7 @@ Cyberswipe.prototype = {
             e.preventDefault();
 
             if(this.lastDirection=="right" && dragElement.getBoundingClientRect().left < openThreshold) {
-                this.close(nav,pushContent,contentContainer,contentElement,drawerWidth,handleWidth,stopScroll);
+                this.close(nav,pushContent,contentContainer,contentElement,drawerWidth,handleWidth,this.preventDefault);
             }
             else if(this.lastDirection=="right") {
                 this.open(nav,pushContent,contentContainer,drawerWidth);
@@ -168,19 +181,20 @@ Cyberswipe.prototype = {
                 this.open(nav,pushContent,contentContainer,drawerWidth);
             }
             else {
-                this.close(nav,pushContent,contentContainer,contentElement,drawerWidth,handleWidth,stopScroll);
+                this.close(nav,pushContent,contentContainer,contentElement,drawerWidth,handleWidth,this.preventDefault);
             }
         },
         open: function(nav,pushContent,contentContainer,drawerWidth) {
             nav.style.left = 0 + 'px';
             pushContent ? contentContainer.style.marginLeft = drawerWidth + 'px' : null;
+            this.defineScrollNorms();
         },
         close: function(nav,pushContent,contentContainer,contentElement,drawerWidth,handleWidth,stopScroll) {
             nav.style.left = drawerWidth*-1 + handleWidth + 'px';
             
             // Restore widths and margins to normal
             pushContent ? contentContainer.style.marginLeft = handleWidth + 'px' : null;
-            pushContent ? contentContainer.style.width = this.normalContainerOffset + 'px' : null;
+            // pushContent ? contentContainer.style.width = this.normalContainerOffset + 'px' : null;
             pushContent ? contentElement.style.width = this.normalContentOffset + 'px' : null;
             
             // Restart scrolling
@@ -196,9 +210,11 @@ Cyberswipe.prototype = {
             this.contentContainer.classList.add('transition');
             this.contentContainer.style.marginLeft = this.drawerWidth + 'px';
             this.contentElement.style.width = this.contentElement.offsetWidth + 'px';
-            this.contentContainer.style.width = this.contentContainer.offsetWidth + this.drawerWidth + 'px';
+            // this.contentContainer.style.width = this.contentContainer.offsetWidth + this.drawerWidth + 'px';
             contentContainer.addEventListener('touchmove',this.utils.preventDefault);
+            this.utils.defineScrollNorms();
         }
+
     },
     close: function() {
         this.nav.classList.add('transition');
@@ -208,7 +224,7 @@ Cyberswipe.prototype = {
             this.contentContainer.classList.add('transition');
             this.contentContainer.style.marginLeft = this.handleWidth + 'px';
             this.contentElement.style.width = this.utils.normalContentOffset + 'px';
-            this.contentContainer.style.width = this.utils.normalContainerOffset + 'px';
+            // this.contentContainer.style.width = this.utils.normalContainerOffset + 'px';
             contentContainer.removeEventListener('touchmove',this.utils.preventDefault);
         }
     },

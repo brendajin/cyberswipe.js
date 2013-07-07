@@ -98,7 +98,7 @@
 <p>In addition, this project would not have been possible without the following people:
     <ul>
         <li><strong><a href="https://github.com/icyfenix/">Liz Howard</a> @icyfenix</strong> who led the very first hackathon team I was on, and who taught the incredible JS 101 class that gave me developer wings</li>
-        <li><strong><a href="https://github.com/pamelafox">Pamela Fox</a> @pamelafox</strong> who taught many of the advanced JS classes that showed me cool DOM stuff, and whose contributions to tablet browser bug threads have saved my sanity a few times</li>
+        <li><strong><a href="https://github.com/pamelafox">Pamela Fox</a> @pamelafox</strong> who taught many of the advanced JS classes where I learned cool DOM stuff, and whose contributions to tablet browser issue threads have saved my sanity a few times</li>
         <li><strong><a href="https://github.com/NevenaDjaja">Nevena Djaja</a> @nevenadjaja</strong> who taught me the proper way to do prototypal inheritance with pen and paper over lunch one day</li>
     </ul>
 <h2>The MIT License (MIT)</h2>

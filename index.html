@@ -5,15 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Cyberswipe.js</title>
     <script src="tap.js"></script>
-    <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-        ga('create', 'UA-42287620-1', 'brendajin.github.io');
-        ga('send', 'pageview');
-    </script>
+    
     <style>
         @font-face {
             font-family: 'icomoon';
@@ -136,8 +128,8 @@
             line-height: .5em;
             padding: .5em 0 .4em 0;
             width: 60px;
-/*            -webkit-box-shadow: inset 0px -2px 0px 0px rgba(0, 46, 64, .5);
-            box-shadow: inset 0px -2px 0px 0px rgba(0, 46, 64, .5);*/
+            -webkit-box-shadow: inset 0px -2px 0px 0px rgba(0, 46, 64, .5);
+            box-shadow: inset 0px -2px 0px 0px rgba(0, 46, 64, .5);
         }
 
         .icon-label {
@@ -416,6 +408,9 @@
                 el.addEventListener('tap', function(e) {
                     toggleViews(document.getElementsByClassName('icon'),this);
                 })
+                el.addEventListener('click',function(e){
+                    toggleViews(document.getElementsByClassName('icon'),this);
+                })
             }
         })();
 
@@ -424,6 +419,7 @@
                 document.getElementById(views[i].getAttribute('toggle')).classList.add('hide');
             }
             document.getElementById(show.getAttribute('toggle')).classList.remove('hide');
+            mySwiper.close();        
         }
 
         document.getElementsByClassName('content-container')[0].addEventListener('click',function(e){mySwiper.close();});
@@ -452,6 +448,15 @@
                 wizardContents += ');</code></pre>';
                 document.getElementById('wizard').innerHTML=wizardContents;
         })
+    </script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-42287620-1', 'brendajin.github.io');
+        ga('send', 'pageview');
     </script>
 </body>
 </html>

@@ -66,7 +66,7 @@
         handleWidth: 60,
         threshold: 50, // The threshold at which the drawer will snap open or shut
         dragElement: document.getElementById('drag-handle'),
-        pushContent: false
+        pushContent: false // If set to true, content will be pushed over when nav drawer opens
     }
 </code></pre>
 </p>

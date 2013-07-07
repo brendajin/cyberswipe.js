@@ -1,4 +1,6 @@
 var Cyberswipe = Cyberswipe || function(options) {
+    options ? options = options : options = {};
+
     // Manage scope
     var self = this;
 

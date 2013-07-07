@@ -191,7 +191,7 @@ Cyberswipe.prototype = {
             this.contentContainer.classList.add('transition');
             this.contentContainer.style.marginLeft = this.handleWidth + 'px';
             this.contentElement.style.width = this.utils.normalContentOffset + 'px';
-            this.contentContainer.style.width = this.utils.normalContainerOffset + this.drawerWidth + 'px';
+            this.contentContainer.style.width = this.utils.normalContainerOffset + 'px';
             window.removeEventListener('touchmove',this.utils.preventDefault);
         }
     },

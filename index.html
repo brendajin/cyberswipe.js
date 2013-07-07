@@ -63,6 +63,31 @@
             width: 98%;
             border: 1px solid #bfd0d9;
         }
+        
+        input,select,label {
+            border-radius: 0;
+            height: 2em;
+            margin: 1em 0.5em 1em 0;
+            font-size:1em;
+            min-width: 5em;
+        }
+        .form {
+            margin: 0 auto;
+            background: rgba(0,0,0,.04);
+            width: 98%;
+        }
+        .wizard {
+            font-size: 1em;
+            width: 15em;
+            padding: 1em;
+            margin: 0 auto;
+        }
+        .button {
+            padding: 1em;
+            background: #2A5769;
+            color: #FABD4A;
+            line-height: 4em;
+        }
         .drawer {
             -webkit-overflow-scrolling: touch;
             overflow-y: auto;
@@ -307,11 +332,12 @@
                         <li><a href="http://swipejs.com/">Swipe.js</a></li>
                     </ul>
                 </p>
-                <p>In addition, this project would not have been possible without the following people:
+                <p>In addition, this project is grateful to the following people:
                     <ul>
                         <li><strong><a href="https://github.com/icyfenix/">Liz Howard</a> @icyfenix</strong> who led the very first hackathon team I was on, and who taught the incredible JS 101 class that gave me developer wings</li>
                         <li><strong><a href="https://github.com/pamelafox">Pamela Fox</a> @pamelafox</strong> who taught many of the advanced JS classes where I learned cool DOM stuff, and whose contributions to tablet browser issue threads have saved my sanity a few times</li>
                         <li><strong><a href="https://github.com/NevenaDjaja">Nevena Djaja</a> @nevenadjaja</strong> who taught me the proper way to do prototypal inheritance with pen and paper over lunch one day</li>
+                        <li><strong><a href="https://github.com/acalub">Angelo Calub</a> @acalub</strong> who took the time to talk and draw through what eventually became the pushContent feature</li>
                     </ul>
                 <h3>The MIT License (MIT)</h3>
                 <p>Copyright (c) 2013 Brenda Jin</p>
@@ -335,24 +361,29 @@
                 THE SOFTWARE.</p>
             </div>
             <div id="helper" class="hide">
-                <p>Use this helper wizard to get you started</p>
-                <p>
-                    <input type="number" placeholder="drawerWidth" name="drawerWidth"></input>px
-                    <br>
-                    <input type="number" placeholder="handleWidth" name="handleWidth"></input>px
-                    <br>
-                    <input type="number" placeholder="threshold" name="threshold"></input>px
-                    <br>
-                    <label>pushContent</label>
-                    <select name="selectPushContent">
-                        <option value="true">true</option>
-                        <option value="false">false</option>
-                    </select>
-                </p>
-                <p>
-                    <button>Generate</button>
-                </p>
-                <div id="wizard"></div>
+                <h3>Use this helper wizard to get you started</h3>
+                <div class="form">
+                    <div class="wizard">
+                        <input type="number" placeholder="drawerWidth" name="drawerWidth"></input>px
+                        <br>
+                        <input type="number" placeholder="handleWidth" name="handleWidth"></input>px
+                        <br>
+                        <input type="number" placeholder="threshold" name="threshold"></input>px
+                        <br>
+                        <label>pushContent</label>
+                        <select name="selectPushContent">
+                            <option value="true">true</option>
+                            <option value="false">false</option>
+                        </select>
+                        <br>
+                        <span class="button">Generate</span>
+                    </div>
+                </div>
+                <div id="wizard">
+                    <pre><code>
+    var myFirstCyberswipe = new Cyberswipe();
+                    </code></pre>
+                </div>
             </div>
         </div>
     </div>    
@@ -384,17 +415,17 @@
 
         document.getElementsByClassName('content-container')[0].addEventListener('click',function(e){mySwiper.close();});
 
-        document.getElementsByTagName('button')[0].addEventListener('click',function(e){
-                var wizardContents = '<pre><code>var myFirstCyberSwiper = new Cyberswipe(';
+        document.getElementsByClassName('button')[0].addEventListener('click',function(e){
+                var wizardContents = '<pre><code>var myFirstCyberwipe = new Cyberswipe(';
                 
                 var drawerWidth = document.getElementsByTagName('input')[0].value;
                 var handleWidth = document.getElementsByTagName('input')[1].value;
                 var threshold = document.getElementsByTagName('input')[2].value;
-                var pushContent = document.getElementsByTagName('select')[0].value;
+                var pushContent = document.getElementsByClassName('button')[0].value;
                 
                 var options, optionsString;
 
-                drawerWidth||handleWidth||threshold||pushContent ? options = {} : options = null;
+                drawerWidth||handleWidth||threshold||pushContent ? options = {} : null;
 
                 drawerWidth ? options.drawerWidth = parseInt(drawerWidth) : null;
                 handleWidth ? options.handleWidth = parseInt(handleWidth) : null;

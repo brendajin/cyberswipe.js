@@ -44,12 +44,15 @@
 <pre><code>
     &lt;nav&gt;
         &lt;div class="drawer"&gt;
+            &lt;!-- Your Navigation Drawer Contents go here --&gt;
         &lt;/div&gt;
         &lt;div id="drag-handle"&gt;
+            &lt;!-- Your icons, buttons, and other primary navigational elements go here --&gt;
         &lt;/div&gt;
     &lt;/nav&gt;
     &lt;div class="content-container"&gt;
         &lt;div class="content"&gt;
+            &lt;!-- Your main page content goes here --&gt;
         &lt;/div&gt;
     &lt;/div&gt;
 </code></pre>

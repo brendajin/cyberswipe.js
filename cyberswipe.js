@@ -6,14 +6,22 @@ var Cyberswipe = Cyberswipe || function(options) {
     this.drawerWidth =  options.drawerWidth || 250;
     this.handleWidth = options.handleWidth || 60;
     this.threshold = options.threshold || 50;
+    
+    // Calculate thresholds
     this.openThreshold = options.threshold || this.threshold;
     this.closeThreshold = options.drawerWidth - options.threshold || this.drawerWidth - this.threshold;
+
     this.dragElement = options.dragElement || document.getElementById('drag-handle');
+
     this.nav = options.nav || document.getElementsByTagName('nav')[0];
+    this.navContent = options.navContent || document.getElementsByClassName('drawer')[0];
+
     this.contentContainer = options.contentContainer || document.getElementsByClassName('content-container')[0];
     this.contentElement = options.contentElement || document.getElementsByClassName('content')[0];
     this.contentMargin = options.contentMargin || 10;
+
     this.pushContent = options.pushContent || false;
+    
     // Make the navigation
     this.utils.makeNav(self);
 
@@ -32,8 +40,10 @@ Cyberswipe.prototype = {
             self.nav.style.width = self.drawerWidth + 'px';
             self.nav.style.left = self.drawerWidth * -1 + self.handleWidth + 'px';
 
-            self.nav.children[0].style.width = self.drawerWidth - self.handleWidth + 'px'
+            // Set the nav content width by subtracting the handle width
+            self.navContent.style.width = self.drawerWidth - self.handleWidth + 'px'
 
+            // Set starting margins
             self.contentContainer.style.marginLeft = self.handleWidth + 'px';
             self.contentElement.style.marginLeft = self.contentMargin + 'px';
             self.contentElement.style.marginRight = self.contentMargin + 'px';
@@ -82,7 +92,7 @@ Cyberswipe.prototype = {
             this.lastX = x.pageX;
 
             if(pushContent) {
-                window.addEventListener('touchmove',stopScroll);
+                contentContainer.addEventListener('touchmove',stopScroll);
                 contentElement.style.width = contentElement.offsetWidth + 'px';
                 contentContainer.style.width = contentContainer.offsetWidth + drawerWidth + 'px';
             }
@@ -167,12 +177,14 @@ Cyberswipe.prototype = {
         },
         close: function(nav,pushContent,contentContainer,contentElement,drawerWidth,handleWidth,stopScroll) {
             nav.style.left = drawerWidth*-1 + handleWidth + 'px';
+            
             // Restore widths and margins to normal
             pushContent ? contentContainer.style.marginLeft = handleWidth + 'px' : null;
             pushContent ? contentContainer.style.width = this.normalContainerOffset + 'px' : null;
             pushContent ? contentElement.style.width = this.normalContentOffset + 'px' : null;
+            
             // Restart scrolling
-            pushContent ? window.removeEventListener('touchmove',stopScroll) : null;
+            pushContent ? contentContainer.removeEventListener('touchmove',stopScroll) : null;
         }
     },
     // Begin public methods
@@ -185,7 +197,7 @@ Cyberswipe.prototype = {
             this.contentContainer.style.marginLeft = this.drawerWidth + 'px';
             this.contentElement.style.width = this.contentElement.offsetWidth + 'px';
             this.contentContainer.style.width = this.contentContainer.offsetWidth + this.drawerWidth + 'px';
-            window.addEventListener('touchmove',this.utils.preventDefault);
+            contentContainer.addEventListener('touchmove',this.utils.preventDefault);
         }
     },
     close: function() {
@@ -197,7 +209,7 @@ Cyberswipe.prototype = {
             this.contentContainer.style.marginLeft = this.handleWidth + 'px';
             this.contentElement.style.width = this.utils.normalContentOffset + 'px';
             this.contentContainer.style.width = this.utils.normalContainerOffset + 'px';
-            window.removeEventListener('touchmove',this.utils.preventDefault);
+            contentContainer.removeEventListener('touchmove',this.utils.preventDefault);
         }
     },
     isOpen: function() {

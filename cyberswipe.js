@@ -39,6 +39,7 @@ Cyberswipe.prototype = {
             // Draw the nav
             self.nav.style.width = self.drawerWidth + 'px';
             self.nav.style.left = self.drawerWidth * -1 + self.handleWidth + 'px';
+            self.dragElement.style.width = self.handleWidth + 'px';
 
             // Set the nav content width by subtracting the handle width
             self.navContent.style.width = self.drawerWidth - self.handleWidth + 'px'

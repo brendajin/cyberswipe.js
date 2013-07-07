@@ -171,7 +171,7 @@
         </div>
         <div class="content">
             <div id="home">
-                <p>Cyberswipe gives you primary and secondary drawer elements to organize your navigation, and is targeted at touchscreens 7" and up. If you would like to add </p>
+                <p>Cyberswipe gives you primary and secondary drawer elements to organize your navigation, and is targeted at touchscreens 7" and up.</p>
 
                 <h3>Quickstart:</h3>
                     <pre><code>
@@ -335,7 +335,25 @@
                 THE SOFTWARE.</p>
             </div>
             <div id="helper" class="hide">
-                <p>A helper wizard would go here</p>
+                <p>Use this helper wizard to get you started</p>
+                <p>
+                    <input type="number" placeholder="drawerWidth" name="drawerWidth"></input>px
+                    <br>
+                    <input type="number" placeholder="handleWidth" name="handleWidth"></input>px
+                    <br>
+                    <input type="number" placeholder="threshold" name="threshold"></input>px
+                    <br>
+                    <input type="text" placeholder="pushContent" name="pushContent">
+                        <select name="selectPushContent">
+                            <option value="true">true</option>
+                            <option value="false">false</option>
+                        </select>
+                    </input>
+                </p>
+                <p>
+                    <button>Generate</button>
+                </p>
+                <div id="wizard"></div>
             </div>
         </div>
     </div>    
@@ -367,6 +385,24 @@
 
         document.getElementsByClassName('content-container')[0].addEventListener('click',function(e){mySwiper.close();});
 
+        document.getElementsByTagName('button')[0].addEventListener('click',function(e){
+                var wizardContents = '<pre><code>var myFirstCyberSwiper = new Cyberswipe(';
+                var options = {};
+                var k,v;
+
+                for(var i = 0; i < document.getElementsByTagName('input').length; i++) {
+                    v = document.getElementsByTagName('input')[i].value;                    
+                    k = document.getElementsByTagName('input')[i].name;
+
+                    v ? options[k] = v : null;
+                }
+                console.log(options);
+                
+                options === {} ? wizardContents += '' : wizardContents += "\n\t" + JSON.stringify(options)+"\n";
+                
+                wizardContents += ');</code></pre>';
+                document.getElementById('wizard').innerHTML=wizardContents;
+        })
     </script>
 </body>
 </html>

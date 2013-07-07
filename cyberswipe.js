@@ -64,22 +64,28 @@ Cyberswipe.prototype = {
 
             // Add native JS event listeners            
             if(this.hasTouch) {
-                self.dragElement.addEventListener('touchstart',function(e){self.utils.onStart(e,self.pushContent,self.contentContainer,self.contentElement,self.drawerWidth)});
+                self.dragElement.addEventListener('touchstart',function(e){
+                    self.utils.onStart(e,self.pushContent,self.contentContainer,self.contentElement,self.drawerWidth);
+                    self.pushContent ? self.utils.defineScrollNorms() : null;
+                });
                 self.dragElement.addEventListener('touchmove',function(e){self.utils.drag(e,self.nav,self.dragElement,self.drawerWidth,self.handleWidth,self.pushContent,self.contentContainer,self.contentElement)});
-                self.dragElement.addEventListener('touchend',function(e){self.utils.snap(e,self.nav,self.dragElement,self.drawerWidth,self.handleWidth,self.openThreshold,self.closeThreshold,self.pushContent,self.contentElement,self.contentContainer)});
+                self.dragElement.addEventListener('touchend',function(e){
+                    self.utils.snap(e,self.nav,self.dragElement,self.drawerWidth,self.handleWidth,self.openThreshold,self.closeThreshold,self.pushContent,self.contentElement,self.contentContainer);
+                    self.pushContent && self.isOpen() ? self.navContent.addEventListener('touchmove',function(e){self.utils.preventScroll(e);}) : self.navContent.removeEventListener('touchmove',function(e){self.utils.preventScroll(e);}) ;
+                });
                 
-                // self.navContent.addEventListener('touchstart',function(e){self.utils.defineScrollNorms;});
-                // self.navContent.addEventListener('touchmove',function(e){self.utils.preventScroll(e);});
-                // self.navContent.addEventListener('end',function(e){self.utils.preventScroll(e);});
             }
             else {
-                self.dragElement.addEventListener('dragstart',function(e){self.utils.onStart(e,self.pushContent,self.contentContainer,self.contentElement,self.drawerWidth)});
+                self.dragElement.addEventListener('dragstart',function(e){
+                    self.utils.onStart(e,self.pushContent,self.contentContainer,self.contentElement,self.drawerWidth);
+                    self.pushContent ? self.utils.defineScrollNorms() : null;
+                });
                 self.dragElement.addEventListener('dragmove',function(e){self.utils.drag(e,self.nav,self.dragElement, self.drawerWidth, self.handleWidth,self.pushContent,self.contentContainer,self.contentElement)});
-                self.dragElement.addEventListener('dragend',function(e){self.utils.snap(e,self.nav,self.dragElement,self.drawerWidth,self.handleWidth,self.openThreshold,self.closeThreshold,self.pushContent,self.contentElement,self.contentContainer)});
+                self.dragElement.addEventListener('dragend',function(e){
+                    self.utils.snap(e,self.nav,self.dragElement,self.drawerWidth,self.handleWidth,self.openThreshold,self.closeThreshold,self.pushContent,self.contentElement,self.contentContainer);
+                    self.pushContent && self.isOpen()? self.navContent.addEventListener('dragmove',function(e){self.utils.preventScroll(e);}) : self.navContent.removeEventListener('dragmove',function(e){self.utils.preventScroll(e);});
+                });
                 
-                // self.navContent.addEventListener('dragstart',function(e){self.utils.defineScrollNorms();});
-                // self.navContent.addEventListener('dragmove',function(e){self.utils.preventScroll(e);});
-                // self.navContent.addEventListener('dragend',function(e){self.utils.preventScroll(e);});
             }
 
             // Redefine norms if screen size or orientation change
@@ -103,10 +109,11 @@ Cyberswipe.prototype = {
             this.startPageX = x.pageX;
             this.lastX = x.pageX;
 
+            this.defineScrollNorms();
+
             if(pushContent) {
                 contentContainer.addEventListener('touchmove',stopScroll);
                 contentElement.style.width = contentElement.offsetWidth + 'px';
-                // contentContainer.style.width = contentContainer.offsetWidth + drawerWidth + 'px';
             }
         },
         preventDefault: function(e){
@@ -187,7 +194,11 @@ Cyberswipe.prototype = {
         open: function(nav,pushContent,contentContainer,drawerWidth) {
             nav.style.left = 0 + 'px';
             pushContent ? contentContainer.style.marginLeft = drawerWidth + 'px' : null;
-            this.defineScrollNorms();
+            // this.defineScrollNorms();
+            // if(pushContent) {
+            //     document.getElementsByTagName('body')[0].style.overflowX = "hidden";
+            //     document.getElementsByTagName('html')[0].style.overflowX = "hidden";
+            // }
         },
         close: function(nav,pushContent,contentContainer,contentElement,drawerWidth,handleWidth,stopScroll) {
             nav.style.left = drawerWidth*-1 + handleWidth + 'px';
@@ -199,6 +210,12 @@ Cyberswipe.prototype = {
             
             // Restart scrolling
             pushContent ? contentContainer.removeEventListener('touchmove',stopScroll) : null;
+
+            // if(pushContent) {
+            //     document.getElementsByTagName('body')[0].style.overflowX = "";
+            //     document.getElementsByTagName('body')[0].style.overflowX = "";
+
+            // }
         }
     },
     // Begin public methods

@@ -47,7 +47,8 @@ Cyberswipe.prototype = {
                     self.nav.classList.remove('transition');
                     self.contentContainer.classList.remove('transition');
                 })
-            }            
+            }       
+
             // Add native JS event listeners            
             if(this.hasTouch) {
                 self.dragElement.addEventListener('touchstart',function(e){self.utils.onStart(e,self.pushContent,self.contentContainer,self.contentElement,self.drawerWidth)});
@@ -173,10 +174,26 @@ Cyberswipe.prototype = {
     open: function(){
         this.nav.classList.add('transition');
         this.nav.style.left = 0 + 'px';
+
+        if(this.pushContent) {
+            this.contentContainer.classList.add('transition');
+            this.contentContainer.style.marginLeft = this.drawerWidth + 'px';
+            this.contentElement.style.width = this.contentElement.offsetWidth + 'px';
+            this.contentContainer.style.width = this.contentContainer.offsetWidth + this.drawerWidth + 'px';
+            window.addEventListener('touchmove',this.utils.preventDefault);
+        }
     },
     close: function() {
         this.nav.classList.add('transition');
         this.nav.style.left = this.drawerWidth*-1 + this.handleWidth + 'px';
+
+        if(this.pushContent) {
+            this.contentContainer.classList.add('transition');
+            this.contentContainer.style.marginLeft = this.handleWidth + 'px';
+            this.contentElement.style.width = this.utils.normalContentOffset + 'px';
+            this.contentContainer.style.width = this.utils.normalContainerOffset + this.drawerWidth + 'px';
+            window.removeEventListener('touchmove',this.utils.preventDefault);
+        }
     },
     isOpen: function() {
         if(this.nav.style.left == 0 + 'px' || this.nav.style.left == 0) {

@@ -68,18 +68,18 @@ Cyberswipe.prototype = {
                 self.dragElement.addEventListener('touchmove',function(e){self.utils.drag(e,self.nav,self.dragElement,self.drawerWidth,self.handleWidth,self.pushContent,self.contentContainer,self.contentElement)});
                 self.dragElement.addEventListener('touchend',function(e){self.utils.snap(e,self.nav,self.dragElement,self.drawerWidth,self.handleWidth,self.openThreshold,self.closeThreshold,self.pushContent,self.contentElement,self.contentContainer)});
                 
-                self.navContent.addEventListener('touchstart',function(e){self.utils.defineScrollNorms;});
-                self.navContent.addEventListener('touchmove',function(e){self.utils.preventScroll(e);});
-                self.navContent.addEventListener('end',function(e){self.utils.preventScroll(e);});
+                // self.navContent.addEventListener('touchstart',function(e){self.utils.defineScrollNorms;});
+                // self.navContent.addEventListener('touchmove',function(e){self.utils.preventScroll(e);});
+                // self.navContent.addEventListener('end',function(e){self.utils.preventScroll(e);});
             }
             else {
                 self.dragElement.addEventListener('dragstart',function(e){self.utils.onStart(e,self.pushContent,self.contentContainer,self.contentElement,self.drawerWidth)});
                 self.dragElement.addEventListener('dragmove',function(e){self.utils.drag(e,self.nav,self.dragElement, self.drawerWidth, self.handleWidth,self.pushContent,self.contentContainer,self.contentElement)});
                 self.dragElement.addEventListener('dragend',function(e){self.utils.snap(e,self.nav,self.dragElement,self.drawerWidth,self.handleWidth,self.openThreshold,self.closeThreshold,self.pushContent,self.contentElement,self.contentContainer)});
                 
-                self.navContent.addEventListener('dragstart',function(e){self.utils.defineScrollNorms();});
-                self.navContent.addEventListener('dragmove',function(e){self.utils.preventScroll(e);});
-                self.navContent.addEventListener('dragend',function(e){self.utils.preventScroll(e);});
+                // self.navContent.addEventListener('dragstart',function(e){self.utils.defineScrollNorms();});
+                // self.navContent.addEventListener('dragmove',function(e){self.utils.preventScroll(e);});
+                // self.navContent.addEventListener('dragend',function(e){self.utils.preventScroll(e);});
             }
 
             // Redefine norms if screen size or orientation change

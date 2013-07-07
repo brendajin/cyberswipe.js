@@ -4,9 +4,8 @@
 <p><strong>Directions:</strong></p>
 <p>Download the <code>cyberswipe.js</code> file and save it. For newbies, save it in the same folder as your <code>index.html</code> file, aka your <code>root</code> directory.</p>
 <p>Link to <code>cyberswipe.js</code> before the closing <code>&lt;/head&gt;</code> tag:
-                    
-<pre><code>&lt;script src="cyberswipe.js"&gt;&lt;/script&gt;</code></pre>
-                    
+    
+<pre><code>    &lt;script src="cyberswipe.js"&gt;&lt;/script&gt;</code></pre>
 </p>
 <p>You will need the following styles, either between <code>&lt;style&gt;</code> tags between the <code>&lt;head&gt;</code> tags, or in your stylesheet:
 <pre><code>    nav {
@@ -57,9 +56,9 @@
 </code></pre>
 </p>
 <p>Right before the closing <code>&lt;/body&gt;</code> tag, instantiate a <code>new Cyberswipe</code> like this:
-<pre><code>
-    var mySwiper = new Cyberswipe(<em>options</em>);
-</code></pre>
+
+<pre><code>    var mySwiper = new Cyberswipe(<em>options</em>);</code></pre>
+
 </p>
 <p>The <code><em>options</em></code> can be set with an <code>object</code>. Here are the basic parameters with their defaults:
 <pre><code>    {

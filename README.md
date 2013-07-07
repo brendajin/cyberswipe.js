@@ -1,3 +1,23 @@
+<style>
+html, body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #FFFFFF;
+    color: #002E40;
+}
+pre {
+    overflow: auto;
+    background: #f8fbfc;
+    margin: 1.5em 0;
+    padding: .25em;
+    width: 98%;
+    border: 1px solid #bfd0d9;
+}
+</style>
+<body>
 <h1>Cyberswipe.js</h1>
 <h2>A Microlibrary for Swipeable Drawer Navigation</h2>
 <p>Cyberswipe gives you primary and secondary drawer elements to organize your navigation, and is targeted at touchscreens 7" and up. If you would like to add </p>
@@ -87,3 +107,4 @@
     mySwiper.close();
     mySwiper.isOpen();
 </code></pre>
+</body>

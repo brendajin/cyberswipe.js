@@ -4,13 +4,12 @@
 <p><strong>Directions:</strong></p>
 <p>Download the <code>cyberswipe.js</code> file and save it. For newbies, save it in the same folder as your <code>index.html</code> file, aka your <code>root</code> directory.</p>
 <p>Link to <code>cyberswipe.js</code> before the closing <code>&lt;/head&gt;</code> tag:
-                    <pre><code>
-    &lt;script src="cyberswipe.js"&gt;&lt;/script&gt;
-                    </code></pre>
+                    
+<pre><code>&lt;script src="cyberswipe.js"&gt;&lt;/script&gt;</code></pre>
+                    
 </p>
 <p>You will need the following styles, either between <code>&lt;style&gt;</code> tags between the <code>&lt;head&gt;</code> tags, or in your stylesheet:
-<pre><code>
-    nav {
+<pre><code>    nav {
         position:fixed;
         top: 0;
         height:100%;
@@ -63,8 +62,7 @@
 </code></pre>
 </p>
 <p>The <code><em>options</em></code> can be set with an <code>object</code>. Here are the basic parameters with their defaults:
-<pre><code>
-    {
+<pre><code>    {
         drawerWidth: 250, // All units are in px
         handleWidth: 60,
         threshold: 50, // The threshold at which the drawer will snap open or shut
@@ -74,8 +72,7 @@
 </code></pre>
 </p>
 <p>Advanced users may find the following additional options useful. These may assist in re-structuring the <code>HTML</code> tags, classes, and ids:
-<pre><code> 
-    {
+<pre><code>    {
         nav: document.getElementsByTagName('nav')[0],
         navContent: document.getElementsByClassName('drawer')[0],
         contentContainer: document.getElementsByClassName('content-container')[0],
@@ -85,8 +82,7 @@
 </code></pre>
 </p>
 <p>Now that you've instantiated a new Cyberswipe, you may want to use one of the following public methods in the rest of your JavaScript:
-<pre><code>
-    mySwiper.open(); 
+<pre><code>    mySwiper.open(); 
     mySwiper.close();
     mySwiper.isOpen();
 </code></pre>

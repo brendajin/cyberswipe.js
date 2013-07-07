@@ -194,11 +194,6 @@ Cyberswipe.prototype = {
         open: function(nav,pushContent,contentContainer,drawerWidth) {
             nav.style.left = 0 + 'px';
             pushContent ? contentContainer.style.marginLeft = drawerWidth + 'px' : null;
-            // this.defineScrollNorms();
-            // if(pushContent) {
-            //     document.getElementsByTagName('body')[0].style.overflowX = "hidden";
-            //     document.getElementsByTagName('html')[0].style.overflowX = "hidden";
-            // }
         },
         close: function(nav,pushContent,contentContainer,contentElement,drawerWidth,handleWidth,stopScroll) {
             nav.style.left = drawerWidth*-1 + handleWidth + 'px';
@@ -210,25 +205,18 @@ Cyberswipe.prototype = {
             
             // Restart scrolling
             pushContent ? contentContainer.removeEventListener('touchmove',stopScroll) : null;
-
-            // if(pushContent) {
-            //     document.getElementsByTagName('body')[0].style.overflowX = "";
-            //     document.getElementsByTagName('body')[0].style.overflowX = "";
-
-            // }
         }
     },
     // Begin public methods
     open: function(){
         this.nav.classList.add('transition');
         this.nav.style.left = 0 + 'px';
-
+        console.log(this);
         if(this.pushContent) {
             this.contentContainer.classList.add('transition');
             this.contentContainer.style.marginLeft = this.drawerWidth + 'px';
             this.contentElement.style.width = this.contentElement.offsetWidth + 'px';
-            // this.contentContainer.style.width = this.contentContainer.offsetWidth + this.drawerWidth + 'px';
-            contentContainer.addEventListener('touchmove',this.utils.preventDefault);
+            this.contentContainer.addEventListener('touchmove',this.utils.preventDefault);
             this.utils.defineScrollNorms();
         }
 
@@ -241,8 +229,7 @@ Cyberswipe.prototype = {
             this.contentContainer.classList.add('transition');
             this.contentContainer.style.marginLeft = this.handleWidth + 'px';
             this.contentElement.style.width = this.utils.normalContentOffset + 'px';
-            // this.contentContainer.style.width = this.utils.normalContainerOffset + 'px';
-            contentContainer.removeEventListener('touchmove',this.utils.preventDefault);
+            this.contentContainer.removeEventListener('touchmove',this.utils.preventDefault);
         }
     },
     isOpen: function() {

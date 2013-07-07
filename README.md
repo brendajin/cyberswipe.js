@@ -12,8 +12,8 @@
         position:fixed;
         top: 0;
         height:100%;
-        background-color:#FABD4A; /* your choice here */
-        z-index:3; /* make sure this is the highest z-index on the page */
+        background-color:#FABD4A; <em>/* your choice here */</em>
+        z-index:3; <em>/* make sure this is the highest z-index on the page */</em>
     }
     .drawer {
         -webkit-overflow-scrolling: touch;
@@ -21,11 +21,11 @@
         position:relative;
         top:0;
         height:100%;
-        color:#002E40; /* your choice here */
+        color:#002E40; <em>/* your choice here */</em>
     }
     .transition {
-        -webkit-transition:all 0.25s ease-in-out; /* for the .open() and .close() methods */
-        -moz-transition:all 0.25s ease-in-out; /* you can pick the timing */
+        -webkit-transition:all 0.25s ease-in-out; <em>/* for the .open() and .close() methods */</em>
+        -moz-transition:all 0.25s ease-in-out; <em>/* you can pick the timing */</em>
         -o-transition:all 0.25s ease-in-out;
         transition:all 0.25s ease-in-out;
     }
@@ -34,7 +34,7 @@
         top: 0;
         right: 0;
         height: 100%;
-        background-color: #2A5769; /* your choice here */
+        background-color: #2A5769; <em>/* your choice here */</em>
     }
 </code></pre>
 </p>
@@ -62,11 +62,11 @@
 </p>
 <p>The <code><em>options</em></code> can be set with an <code>object</code>. Here are the basic parameters with their defaults:
 <pre><code>    {
-        drawerWidth: 250, // All units are in px
+        drawerWidth: 250, <em>// All units are in px</em>
         handleWidth: 60,
-        threshold: 50, // The threshold at which the drawer will snap open or shut
+        threshold: 50, <em>// The threshold at which the drawer will snap open or shut</em>
         dragElement: document.getElementById('drag-handle'),
-        pushContent: false // If set to true, content will be pushed over when nav drawer opens
+        pushContent: false <em>// If set to true, content will be pushed over when nav drawer opens</em>
     }
 </code></pre>
 </p>

@@ -3,298 +3,59 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
     <title>Cyberswipe.js</title>
     <script src="tap.js"></script>
+    <script src="cyberswipe.js"></script>
     <style>
-        @font-face {
-            font-family: 'icomoon';
-            src:url('fonts/icomoon.eot');
-            src:url('fonts/icomoon.eot?#iefix') format('embedded-opentype'),
-                url('fonts/icomoon.woff') format('woff'),
-                url('fonts/icomoon.ttf') format('truetype'),
-                url('fonts/icomoon.svg#icomoon') format('svg');
-            font-weight: normal;
-            font-style: normal;
-        }
-        /* Use the following CSS code if you want to use data attributes for inserting your icons */
-        [data-icon]:before {
-            font-family: 'icomoon';
-            /*font-size:4em;*/
-            content: attr(data-icon);
-            speak: none;
-            font-weight: normal;
-            font-variant: normal;
-            text-transform: none;
-            line-height: 1;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        html, body {
-            font-family: sans-serif;
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #FFFFFF;
-            color: #002E40;
-        }
-
         nav {
             position:fixed;
             top: 0;
             height:100%;
-            background-color:#FABD4A;
-            z-index:3;
-        }
-
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        nav ul li {
-            list-style:none;
-            padding: 1rem;
-        }
-        pre {
-            overflow: auto;
-            background: #f8fbfc;
-            margin: 1.5em 0;
-            padding: .25em;
-            width: 98%;
-            border: 1px solid #bfd0d9;
+            background-color:#FABD4A; /* your choice here */
+            z-index:3; /* make sure this is the highest z-index on the page */
         }
         .drawer {
             -webkit-overflow-scrolling: touch;
             overflow-y: auto;
             position:relative;
             top:0;
-            color:#002E40;
             height:100%;
+            color:#002E40; /* your choice here */
         }
-
-        .drawer p {
-            margin-left:10px;
+        .transition {
+            -webkit-transition:all 0.25s ease-in-out; /* for the .open() and .close() methods */
+            -moz-transition:all 0.25s ease-in-out; /* you can pick the timing */
+            -o-transition:all 0.25s ease-in-out;
+            transition:all 0.25s ease-in-out;
         }
-
-        .footer {
-        }
-
-        .content {
-            padding-bottom: 1em;
-        }
-
-        .hide {
-            display:none;
-        }
-
         #drag-handle {
             position: absolute;
             top: 0;
             right: 0;
             height: 100%;
-            background-color: #2A5769;
-            color: #FABD4A;
+            background-color: #2A5769; /* your choice here */
         }
-        .icon {
-            font-size: 2.7em;
-            text-align: center;
-            line-height: .5em;
-            border-bottom: 1px solid #FABD4A;
-            padding: .5em 0 .4em 0;
-            width: 60px;
-        }
-
-        .icon-label {
-            font-size:.4em;
-        }
-
-        .transition {
-            -webkit-transition:all 0.25s ease-in-out;
-            -moz-transition:all 0.25s ease-in-out;
-            -o-transition:all 0.25s ease-in-out;
-            transition:all 0.25s ease-in-out;
-        }
-
     </style>
 </head>
 <body>
     <nav>
         <div class="drawer">
-            <ul>
-                <li>Item</li>
-                <li>Item</li>
-                <li>Item</li>
-                <li>Item</li>
-                <li>Item</li>
-                <li>Item</li>
-                <li>Item</li>
-                <li>Item</li>
-                <li>Item</li>
-                <li>Item</li>
-                <li>Item</li>
-                <li>Item</li>
-                <li>Item</li>
-                <li>Item</li>
-                <li>Item</li>
-                <li>Item</li>
-                <li>Item</li>
-                <li>Item</li>
-                <li>Item</li>
-                <li>Item</li>
-                <li>Item</li>
-                <li>Item</li>
-                <li>Item</li>
-                <li>Item</li>
-                <li>Item</li>
-                <li>Item</li>
-            </ul>
-            <div class="footer">
-                <p>Authored by Brenda Jin, <a href="http://opensource.org/licenses/MIT">MIT License</a> 2013</p>
-            </div>
         </div>
         <div id="drag-handle">
-            <div toggle="home" class="icon" aria-hidden="true" data-icon="&#xe000;">
-                <span class="icon-label">Home</span>
-            </div>
-            <div toggle="docs" class="icon" aria-hidden="true" data-icon="&#xe008;">
-                <span class="icon-label">Docs</span>
-            </div>
-            <div toggle="helper" class="icon" aria-hidden="true" data-icon="&#xe001;">
-                <span class="icon-label">Helper</span>
-            </div>
         </div>
     </nav>
     <div class="content-container">
         <div class="content">
             <h1>Cyberswipe.js</h1>
             <h2>A Microlibrary for Swipeable Drawer Navigation</h2>
-            <div id="home">
-                <p>Cyberswipe gives you primary and secondary drawer elements to organize your navigation, and is targeted at touchscreens 7" and up. If you would like to add </p>
-
-                <p><strong>Quickstart:</strong></p>
-                <p>Download the <code>cyberswipe.js</code> file and save it. For newbies, save it in the same folder as your <code>index.html</code> file, aka your <code>root</code> directory.</p>
-                <p>Link to <code>cyberswipe.js</code> before the closing <code>&lt;/head&gt;</code> tag:
-                    <pre><code>
-    &lt;script src="cyberswipe.js"&gt;&lt;/script&gt;
-                    </code></pre>
-                </p>
-                <p>You will need the following styles, either between <code>&lt;style&gt;</code> tags between the <code>&lt;head&gt;</code> tags, or in your stylesheet:
-                    <pre><code>
-    nav {
-        position:fixed;
-        top: 0;
-        height:100%;
-        background-color:#FABD4A; /* your choice here */
-        z-index:3; /* make sure this is the highest z-index on the page */
-    }
-    .drawer {
-        -webkit-overflow-scrolling: touch;
-        overflow-y: auto;
-        position:relative;
-        top:0;
-        height:100%;
-        color:#002E40; /* your choice here */
-    }
-    .transition {
-        -webkit-transition:all 0.25s ease-in-out; /* for the .open() and .close() methods */
-        -moz-transition:all 0.25s ease-in-out; /* you can pick the timing */
-        -o-transition:all 0.25s ease-in-out;
-        transition:all 0.25s ease-in-out;
-    }
-    #drag-handle {
-        position: absolute;
-        top: 0;
-        right: 0;
-        height: 100%;
-        background-color: #2A5769; /* your choice here */
-    }
-                    </code></pre>
-                </p>
-                <p>Use the following structure in the between the <code>&lt;body&gt;</code> tags in your <code>index.html</code> file:
-                    <pre><code>
-    &lt;nav&gt;
-        &lt;div class="drawer"&gt;
-        &lt;/div&gt;
-        &lt;div id="drag-handle"&gt;
-        &lt;/div&gt;
-    &lt;/nav&gt;
-    &lt;div class="content-container"&gt;
-        &lt;div class="content"&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-                    </code></pre>
-                </p>
-                <p>Right before the closing <code>&lt;/body&gt;</code> tag, instantiate a <code>new Cyberswipe</code> like this:
-                    <pre><code>
-    var mySwiper = new Cyberswipe(<em>options</em>);
-                    </code></pre>
-                </p>
-                <p>The <code><em>options</em></code> can be set with an <code>object</code>. Here are the basic parameters with their defaults:
-                    <pre><code>
-    {
-        drawerWidth: 250, // All units are in px
-        handleWidth: 60,
-        threshold: 50, // The threshold at which the drawer will snap open or shut
-        dragElement: document.getElementById('drag-handle'),
-        pushContent: false
-    }
-                    </code></pre>
-                </p>
-                <p>Advanced users may find the following additional options useful. These may assist in re-structuring the <code>HTML</code> tags, classes, and ids:
-                    <pre><code> 
-    {
-        nav: document.getElementsByTagName('nav')[0],
-        navContent: document.getElementsByClassName('drawer')[0],
-        contentContainer: document.getElementsByClassName('content-container')[0],
-        contentElement: document.getElementsByClassName('content')[0],
-        contentMargin: 10
-    }
-                    </code></pre>
-                </p>
-                <p>Now that you've instantiated a new Cyberswipe, you may want to use one of the following public methods in the rest of your JavaScript:
-                    <pre><code>
-    mySwiper.open(); 
-    mySwiper.close();
-    mySwiper.isOpen();
-                    </code></pre>
-            </div>
-            <div id="docs" class="hide">
-                <p>Some docs would go here</p>
-            </div>
-            <div id="helper" class="hide">
-                <p>A helper wizard would go here</p>
-            </div>
         </div>
     </div>    
 
-    <script src="cyberswipe.js"></script>
     <script>
-
-        var mySwiper = new Cyberswipe({pushContent:true});
-        
-        (function addLinks() {
-            for (var i = 0; i < document.getElementsByClassName('icon').length; i++) {
-                el = document.getElementsByClassName('icon')[i];
-
-                var thisTap = "tap" + i;
-                thisTap = new Tap (el);
-
-                el.addEventListener('tap', function(e) {
-                    toggleViews(document.getElementsByClassName('icon'),this);
-                })
-            }
-        })();
-
-        var toggleViews = function(views,show) {
-            for (var i = 0; i < views.length; i++) {
-                document.getElementById(views[i].getAttribute('toggle')).classList.add('hide');
-            }
-            document.getElementById(show.getAttribute('toggle')).classList.remove('hide');
-        }
-
-        document.getElementsByClassName('content-container')[0].addEventListener('click',function(e){mySwiper.close();});
-
+        var mySwiper = new Cyberswipe({
+            handleWidth:60
+        });
     </script>
 </body>
 </html>

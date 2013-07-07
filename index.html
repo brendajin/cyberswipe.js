@@ -159,6 +159,9 @@
             <div toggle="docs" class="icon" aria-hidden="true" data-icon="&#xe008;">
                 <span class="icon-label">Docs</span>
             </div>
+            <div toggle="info" class="icon" aria-hidden="true" data-icon="&#xe009;">
+                <span class="icon-label">Info</span>
+            </div>
             <div toggle="helper" class="icon" aria-hidden="true" data-icon="&#xe001;">
                 <span class="icon-label">Helper</span>
             </div>
@@ -171,7 +174,30 @@
             <div id="home">
                 <p>Cyberswipe gives you primary and secondary drawer elements to organize your navigation, and is targeted at touchscreens 7" and up. If you would like to add </p>
 
-                <p><strong>Quickstart:</strong></p>
+                <h3>Quickstart:</h3>
+                    <pre><code>
+    var mySwiper = new Cyberswipe({
+        drawerWidth: 250, // All units are in px
+        handleWidth: 60,
+        threshold: 50, // The threshold at which the drawer will snap open or shut
+        dragElement: document.getElementById('drag-handle'),
+        pushContent: false, // If set to true, content will be pushed over when nav drawer opens
+        nav: document.getElementsByTagName('nav')[0],
+        navContent: document.getElementsByClassName('drawer')[0],
+        contentContainer: document.getElementsByClassName('content-container')[0],
+        contentElement: document.getElementsByClassName('content')[0],
+        contentMargin: 10
+    });
+                </code></pre>
+                <h3>Public Methods</h3>
+                <pre><code>
+    mySwiper.open(); 
+    mySwiper.close();
+    mySwiper.isOpen();
+                </code></pre>
+            </div>
+            <div id="docs" class="hide">
+                <h3>Instructions</h3>
                 <p><a href="cyberswipe.js">Download</a> the <code>cyberswipe.js</code> file and save it. For newbies, save it in the same folder as your <code>index.html</code> file, aka your <code>root</code> directory.</p>
                 <p>Link to <code>cyberswipe.js</code> before the closing <code>&lt;/head&gt;</code> tag:
                     <pre><code>
@@ -257,9 +283,44 @@
     mySwiper.close();
     mySwiper.isOpen();
                     </code></pre>
+                </p>
+                
             </div>
-            <div id="docs" class="hide">
-                <p>Some docs would go here</p>
+            <div id="info" class="hide">
+                <h3>Credits</h3>
+                <p>This project was heavily inspired by the following microlibraries:
+                    <ul>
+                        <li><a href="https://github.com/jakiestfu/Snap.js/">Snap.js</a></li>
+                        <li><a href="https://github.com/alexgibson/tap.js">Tap.js</a></li>
+                        <li><a href="http://swipejs.com/">Swipe.js</a></li>
+                    </ul>
+                </p>
+                <p>In addition, this project would not have been possible without the following people:
+                    <ul>
+                        <li><strong><a href="https://github.com/icyfenix/">Liz Howard</a> @icyfenix</strong> who led the very first hackathon team I was on, and who taught the incredible JS 101 class that gave me developer wings</li>
+                        <li><strong><a href="https://github.com/pamelafox">Pamela Fox</a> @pamelafox</strong> who taught many of the advanced JS classes where I learned cool DOM stuff, and whose contributions to tablet browser issue threads have saved my sanity a few times</li>
+                        <li><strong><a href="https://github.com/NevenaDjaja">Nevena Djaja</a> @nevenadjaja</strong> who taught me the proper way to do prototypal inheritance with pen and paper over lunch one day</li>
+                    </ul>
+                <h3>The MIT License (MIT)</h3>
+                <p>Copyright (c) 2013 Brenda Jin</p>
+
+                <p>Permission is hereby granted, free of charge, to any person obtaining a copy
+                of this software and associated documentation files (the "Software"), to deal
+                in the Software without restriction, including without limitation the rights
+                to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+                copies of the Software, and to permit persons to whom the Software is
+                furnished to do so, subject to the following conditions:</p>
+
+                <p>The above copyright notice and this permission notice shall be included in
+                all copies or substantial portions of the Software.</p>
+
+                <p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+                IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+                FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+                AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+                LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+                OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+                THE SOFTWARE.</p>
             </div>
             <div id="helper" class="hide">
                 <p>A helper wizard would go here</p>

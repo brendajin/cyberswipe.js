@@ -41,18 +41,18 @@
 </code></pre>
 </p>
 <p>Use the following structure in the between the <code>&lt;body&gt;</code> tags in your <code>index.html</code> file:
-<pre><code>
-    &lt;nav&gt;
+
+<pre><code>    &lt;nav&gt;
         &lt;div class="drawer"&gt;
-            &lt;!-- Your Navigation Drawer Contents go here --&gt;
+            <em>&lt;!-- Your Navigation Drawer Contents go here --&gt;</em>
         &lt;/div&gt;
         &lt;div id="drag-handle"&gt;
-            &lt;!-- Your icons, buttons, and other primary navigational elements go here --&gt;
+            <em>&lt;!-- Your icons, buttons, and other primary navigational elements go here --&gt;</em>
         &lt;/div&gt;
     &lt;/nav&gt;
     &lt;div class="content-container"&gt;
         &lt;div class="content"&gt;
-            &lt;!-- Your main page content goes here --&gt;
+            <em>&lt;!-- Your main page content goes here --&gt;</em>
         &lt;/div&gt;
     &lt;/div&gt;
 </code></pre>

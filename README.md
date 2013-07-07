@@ -1,7 +1,7 @@
 <h1>Cyberswipe.js</h1>
 <h2>A Microlibrary for Swipeable Drawer Navigation</h2>
-<p>Cyberswipe gives you primary and secondary drawer elements to organize your navigation, and is targeted at touchscreens 7" and up. If you would like to add </p>
-<p><strong>Quickstart:</strong></p>
+<p>Cyberswipe gives you primary and secondary drawer elements to organize your navigation, and is targeted at touchscreens 7" and up. <a href="http://brendajin.github.io/cyberswipe.js/">Demo and API helper</a></p>
+<p><strong>Directions:</strong></p>
 <p>Download the <code>cyberswipe.js</code> file and save it. For newbies, save it in the same folder as your <code>index.html</code> file, aka your <code>root</code> directory.</p>
 <p>Link to <code>cyberswipe.js</code> before the closing <code>&lt;/head&gt;</code> tag:
                     <pre><code>

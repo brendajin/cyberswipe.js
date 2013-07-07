@@ -107,14 +107,12 @@ Cyberswipe.prototype = {
         },
         getDirection: function (lastX, currentX) {
             var direction = '';
-
             if(lastX - currentX > 0) {
                 direction = 'left;'
             }
             else {
                 direction = 'right';
             }
-
             this.lastDirection = direction;
             return direction;
         },
@@ -151,29 +149,31 @@ Cyberswipe.prototype = {
             e.preventDefault();
 
             if(this.lastDirection=="right" && dragElement.getBoundingClientRect().left < openThreshold) {
-                nav.style.left = drawerWidth*-1 + handleWidth + 'px';
-                pushContent ? contentContainer.style.marginLeft = handleWidth + 'px' : null;
-                pushContent ? window.removeEventListener('touchmove',stopScroll) : null;
-                pushContent ? contentContainer.style.width = this.normalContainerOffset + 'px' : null;
-                pushContent ? contentElement.style.width = this.normalContentOffset + 'px' : null;
+                this.close(nav,pushContent,contentContainer,contentElement,drawerWidth,handleWidth,stopScroll);
             }
             else if(this.lastDirection=="right") {
-                nav.style.left = 0 + 'px';
-                pushContent ? contentContainer.style.marginLeft = drawerWidth + 'px' : null;
+                this.open(nav,pushContent,contentContainer,drawerWidth);
             }
             else if(this.lastDirection=="left" && dragElement.getBoundingClientRect().left > closeThreshold) {
-                nav.style.left = 0 + 'px';            
-                pushContent ? contentContainer.style.marginLeft = drawerWidth + 'px' : null;
+                this.open(nav,pushContent,contentContainer,drawerWidth);
             }
             else {
-                nav.style.left = drawerWidth*-1 + handleWidth + 'px';
-                pushContent ? contentContainer.style.marginLeft = handleWidth + 'px' : null;
-                pushContent ? window.removeEventListener('touchmove',stopScroll) : null;
-                pushContent ? contentContainer.style.width = this.normalContainerOffset + 'px' : null;
-                pushContent ? contentElement.style.width = this.normalContentOffset + 'px' : null;
+                this.close(nav,pushContent,contentContainer,contentElement,drawerWidth,handleWidth,stopScroll);
             }
-            
         },
+        open: function(nav,pushContent,contentContainer,drawerWidth) {
+            nav.style.left = 0 + 'px';
+            pushContent ? contentContainer.style.marginLeft = drawerWidth + 'px' : null;
+        },
+        close: function(nav,pushContent,contentContainer,contentElement,drawerWidth,handleWidth,stopScroll) {
+            nav.style.left = drawerWidth*-1 + handleWidth + 'px';
+            // Restore widths and margins to normal
+            pushContent ? contentContainer.style.marginLeft = handleWidth + 'px' : null;
+            pushContent ? contentContainer.style.width = this.normalContainerOffset + 'px' : null;
+            pushContent ? contentElement.style.width = this.normalContentOffset + 'px' : null;
+            // Restart scrolling
+            pushContent ? window.removeEventListener('touchmove',stopScroll) : null;
+        }
     },
     // Begin public methods
     open: function(){

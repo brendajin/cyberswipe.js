@@ -96,7 +96,6 @@ Cyberswipe.prototype = {
                     // The below line was used in its analagous touch listener to manage scroll. Want to confirm that this can be taken out before fully removing it.
                     // self.pushContent && self.isOpen()? self.navContent.addEventListener('mousemove',function(e){self.utils.preventScroll(e);}) : self.navContent.removeEventListener('mousemove',function(e){self.utils.preventScroll(e);});
                 });
-                
             }
 
             // Redefine norms if screen size or orientation change

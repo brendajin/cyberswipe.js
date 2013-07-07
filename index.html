@@ -343,12 +343,11 @@
                     <br>
                     <input type="number" placeholder="threshold" name="threshold"></input>px
                     <br>
-                    <input type="text" placeholder="pushContent" name="pushContent">
-                        <select name="selectPushContent">
-                            <option value="true">true</option>
-                            <option value="false">false</option>
-                        </select>
-                    </input>
+                    <label>pushContent</label>
+                    <select name="selectPushContent">
+                        <option value="true">true</option>
+                        <option value="false">false</option>
+                    </select>
                 </p>
                 <p>
                     <button>Generate</button>
@@ -387,18 +386,24 @@
 
         document.getElementsByTagName('button')[0].addEventListener('click',function(e){
                 var wizardContents = '<pre><code>var myFirstCyberSwiper = new Cyberswipe(';
-                var options = {};
-                var k,v;
-
-                for(var i = 0; i < document.getElementsByTagName('input').length; i++) {
-                    v = document.getElementsByTagName('input')[i].value;                    
-                    k = document.getElementsByTagName('input')[i].name;
-
-                    v ? options[k] = v : null;
-                }
-                console.log(options);
                 
-                options === {} ? wizardContents += '' : wizardContents += "\n\t" + JSON.stringify(options)+"\n";
+                var drawerWidth = document.getElementsByTagName('input')[0].value;
+                var handleWidth = document.getElementsByTagName('input')[1].value;
+                var threshold = document.getElementsByTagName('input')[2].value;
+                var pushContent = document.getElementsByTagName('select')[0].value;
+                
+                var options, optionsString;
+
+                drawerWidth||handleWidth||threshold||pushContent ? options = {} : options = null;
+
+                drawerWidth ? options.drawerWidth = parseInt(drawerWidth) : null;
+                handleWidth ? options.handleWidth = parseInt(handleWidth) : null;
+                threshold ? options.threshold = parseInt(threshold) : null;
+                pushContent ? options.pushContent = Boolean(pushContent) : null;
+                
+                optionsString = JSON.stringify(options).replace(/,/g,",\n\t");
+
+                options ? wizardContents += "\n\t" + optionsString +"\n" : wizardContents += '';
                 
                 wizardContents += ');</code></pre>';
                 document.getElementById('wizard').innerHTML=wizardContents;

@@ -37,17 +37,13 @@
             height: 100%;
             background-color: #FFFFFF;
             color: #002E40;
-            /*overflow-x:hidden;*/
         }
 
         nav {
-            /*-webkit-overflow-scrolling: touch;
-            overflow-y: auto;*/
             position:fixed;
             top: 0;
             height:100%;
             background-color:#FABD4A;
-            /*overflow:hidden;*/
             z-index:3;
         }
 
@@ -73,10 +69,8 @@
             overflow-y: auto;
             position:relative;
             top:0;
-            list-style:none;
             color:#002E40;
             height:100%;
-            /*padding-left: 10px;*/
         }
 
         .drawer p {
@@ -85,17 +79,19 @@
 
         .footer {
         }
+
         .content {
             padding-bottom: 1em;
         }
+
         .hide {
             display:none;
         }
+
         #drag-handle {
             position: absolute;
             top: 0;
             right: 0;
-            width: 60px;
             height: 100%;
             background-color: #2A5769;
             color: #FABD4A;
@@ -106,6 +102,7 @@
             line-height: .5em;
             border-bottom: 1px solid #FABD4A;
             padding: .5em 0 .4em 0;
+            width: 60px;
         }
 
         .icon-label {
@@ -113,10 +110,10 @@
         }
 
         .transition {
-            -webkit-transition:all 1.0s ease-in-out;
-            -moz-transition:all 1.0s ease-in-out;
-            -o-transition:all 1.0s ease-in-out;
-            transition:all 1.0s ease-in-out;
+            -webkit-transition:all 0.25s ease-in-out;
+            -moz-transition:all 0.25s ease-in-out;
+            -o-transition:all 0.25s ease-in-out;
+            transition:all 0.25s ease-in-out;
         }
 
     </style>
@@ -173,13 +170,45 @@
             <h1>Cyberswipe.js</h1>
             <h2>A Microlibrary for Swipeable Drawer Navigation</h2>
             <div id="home">
-                <p>Cyberswipe gives you primary and secondary drawer elements to organize your navigation, and is targeted at touchscreens 7" and up.</p>
+                <p>Cyberswipe gives you primary and secondary drawer elements to organize your navigation, and is targeted at touchscreens 7" and up. If you would like to add </p>
 
                 <p><strong>Quickstart:</strong></p>
                 <p>Download the <code>cyberswipe.js</code> file and save it. For newbies, save it in the same folder as your <code>index.html</code> file, aka your <code>root</code> directory.</p>
                 <p>Link to <code>cyberswipe.js</code> before the closing <code>&lt;/head&gt;</code> tag:
                     <pre><code>
                         &lt;script src="cyberswipe.js"&gt;&lt;/script&gt;
+                    </code></pre>
+                </p>
+                <p>You will need the following styles, either between <code>&lt;style&gt;</code> tags between the <code>&lt;head&gt;</code> tags, or in your stylesheet:
+                    <pre><code>
+                        nav {
+                            position:fixed;
+                            top: 0;
+                            height:100%;
+                            background-color:#FABD4A; /* your choice here */
+                            z-index:3; /* make sure this is the highest z-index on the page */
+                        }
+                        .drawer {
+                            -webkit-overflow-scrolling: touch;
+                            overflow-y: auto;
+                            position:relative;
+                            top:0;
+                            height:100%;
+                            color:#002E40; /* your choice here */
+                        }
+                        .transition {
+                            -webkit-transition:all 0.25s ease-in-out; /* for the .open() and .close() methods */
+                            -moz-transition:all 0.25s ease-in-out; /* you can pick the timing */
+                            -o-transition:all 0.25s ease-in-out;
+                            transition:all 0.25s ease-in-out;
+                        }
+                        #drag-handle {
+                            position: absolute;
+                            top: 0;
+                            right: 0;
+                            height: 100%;
+                            background-color: #2A5769; /* your choice here */
+                        }
                     </code></pre>
                 </p>
                 <p>Use the following structure in the between the <code>&lt;body&gt;</code> tags in your <code>index.html</code> file:
@@ -223,6 +252,12 @@
                         }
                     </code></pre>
                 </p>
+                <p>Now that you've instantiated a new Cyberswipe, you may want to use one of the following public methods in the rest of your JavaScript:
+                    <pre><code>
+                        mySwiper.open(); 
+                        mySwiper.close();
+                        mySwiper.isOpen();
+                    </code></pre>
             </div>
             <div id="docs" class="hide">
                 <p>Some docs would go here</p>
@@ -257,6 +292,8 @@
             }
             document.getElementById(show.getAttribute('toggle')).classList.remove('hide');
         }
+
+        document.getElementsByClassName('content-container')[0].addEventListener('click',function(e){mySwiper.close();});
 
     </script>
 </body>

@@ -1,5 +1,6 @@
 var Cyberswipe = Cyberswipe || function(options) {
     options ? options = options : options = {};
+
     // Manage scope
     var self = this;
 
@@ -78,16 +79,23 @@ Cyberswipe.prototype = {
                 
             }
             else {
-                self.dragElement.addEventListener('dragstart',function(e){
+                self.dragElement.addEventListener('mousedown',function(e){
+                    self.utils.mouseDown = true;
                     self.utils.onStart(e,self.pushContent,self.contentContainer,self.contentElement,self.drawerWidth);
                     self.pushContent ? self.utils.defineScrollNorms() : null;
                 });
-                self.dragElement.addEventListener('dragmove',function(e){self.utils.drag(e,self.nav,self.dragElement, self.drawerWidth, self.handleWidth,self.pushContent,self.contentContainer,self.contentElement)});
-                self.dragElement.addEventListener('dragend',function(e){
-                    self.utils.snap(e,self.nav,self.dragElement,self.drawerWidth,self.handleWidth,self.openThreshold,self.closeThreshold,self.pushContent,self.contentElement,self.contentContainer);
-                    self.pushContent && self.isOpen()? self.navContent.addEventListener('dragmove',function(e){self.utils.preventScroll(e);}) : self.navContent.removeEventListener('dragmove',function(e){self.utils.preventScroll(e);});
+                self.dragElement.addEventListener('mousemove',function(e){
+                    // Check to see if mouse is down during mousemove
+                    if(self.utils.mouseDown===true) {
+                        self.utils.drag(e,self.nav,self.dragElement, self.drawerWidth, self.handleWidth,self.pushContent,self.contentContainer,self.contentElement)
+                    }
                 });
-                
+                self.dragElement.addEventListener('mouseup',function(e){
+                    self.utils.mouseDown = false;
+                    self.utils.snap(e,self.nav,self.dragElement,self.drawerWidth,self.handleWidth,self.openThreshold,self.closeThreshold,self.pushContent,self.contentElement,self.contentContainer);
+                    // The below line was used in its analagous touch listener to manage scroll. Want to confirm that this can be taken out before fully removing it.
+                    // self.pushContent && self.isOpen()? self.navContent.addEventListener('mousemove',function(e){self.utils.preventScroll(e);}) : self.navContent.removeEventListener('mousemove',function(e){self.utils.preventScroll(e);});
+                });
             }
 
             // Redefine norms if screen size or orientation change

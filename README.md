@@ -90,9 +90,9 @@
 <h2>Credits</h2>
 <p>This project was heavily inspired by the following microlibraries:
     <ul>
-        <li>Snap.js</li>
-        <li>Tap.js</li>
-        <li>Swipe.js</li>
+        <li><a href="https://github.com/jakiestfu/Snap.js/">Snap.js</a></li>
+        <li><a href="https://github.com/alexgibson/tap.js">Tap.js</a></li>
+        <li><a href="http://swipejs.com/">Swipe.js</a></li>
     </ul>
 </p>
 <p>In addition, this project would not have been possible without the following people:

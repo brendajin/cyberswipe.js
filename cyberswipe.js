@@ -13,13 +13,13 @@ var Cyberswipe = Cyberswipe || function(options) {
     this.openThreshold = options.threshold || this.threshold;
     this.closeThreshold = options.drawerWidth - options.threshold || this.drawerWidth - this.threshold;
 
-    this.dragElement = options.dragElement || document.getElementById('drag-handle');
+    this.dragElement = options.dragElement || document.getElementById('cyber-drag-handle');
 
     this.nav = options.nav || document.getElementsByTagName('nav')[0];
-    this.navContent = options.navContent || document.getElementsByClassName('drawer')[0];
+    this.navContent = options.navContent || document.getElementsByClassName('cyber-drawer')[0];
 
-    this.contentContainer = options.contentContainer || document.getElementsByClassName('content-container')[0];
-    this.contentElement = options.contentElement || document.getElementsByClassName('content')[0];
+    this.contentContainer = options.contentContainer || document.getElementsByClassName('cyber-content-container')[0];
+    this.contentElement = options.contentElement || document.getElementsByClassName('cyber-content')[0];
     this.contentMargin = options.contentMargin || 10;
 
     this.pushContent = options.pushContent || false;

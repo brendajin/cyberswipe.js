@@ -16,7 +16,7 @@
         background-color:#FABD4A; <em>/* your choice here */</em>
         z-index:3; <em>/* make sure this is the highest z-index on the page */</em>
     }
-    .drawer {
+    .cyber-drawer {
         -webkit-overflow-scrolling: touch;
         overflow-y: auto;
         position:relative;
@@ -24,13 +24,13 @@
         height:100%;
         color:#002E40; <em>/* your choice here */</em>
     }
-    .transition {
+    .cyber-transition {
         -webkit-transition:all 0.25s ease-in-out; <em>/* for the .open() and .close() methods */</em>
         -moz-transition:all 0.25s ease-in-out; <em>/* you can pick the timing */</em>
         -o-transition:all 0.25s ease-in-out;
         transition:all 0.25s ease-in-out;
     }
-    #drag-handle {
+    #cyber-drag-handle {
         position: absolute;
         top: 0;
         right: 0;
@@ -42,15 +42,15 @@
 <p>Use the following structure in the between the <code>&lt;body&gt;</code> tags in your <code>index.html</code> file:
 
 <pre><code>    &lt;nav&gt;
-        &lt;div class="drawer"&gt;
+        &lt;div class="cyber-drawer"&gt;
             <em>&lt;!-- Your Navigation Drawer Contents go here --&gt;</em>
         &lt;/div&gt;
-        &lt;div id="drag-handle"&gt;
+        &lt;div id="cyber-drag-handle"&gt;
             <em>&lt;!-- Your icons, buttons, and other primary navigational elements go here --&gt;</em>
         &lt;/div&gt;
     &lt;/nav&gt;
-    &lt;div class="content-container"&gt;
-        &lt;div class="content"&gt;
+    &lt;div class="cyber-content-container"&gt;
+        &lt;div class="cyber-content"&gt;
             <em>&lt;!-- Your main page content goes here --&gt;</em>
         &lt;/div&gt;
     &lt;/div&gt;
@@ -74,9 +74,9 @@
 <p>Advanced users may find the following additional options useful. These may assist in re-structuring the <code>HTML</code> tags, classes, and ids:
 <pre><code>    {
         nav: document.getElementsByTagName('nav')[0],
-        navContent: document.getElementsByClassName('drawer')[0],
-        contentContainer: document.getElementsByClassName('content-container')[0],
-        contentElement: document.getElementsByClassName('content')[0],
+        navContent: document.getElementsByClassName('cyber-drawer')[0],
+        contentContainer: document.getElementsByClassName('cyber-content-container')[0],
+        contentElement: document.getElementsByClassName('cyber-content')[0],
         contentMargin: 10
     }
 </code></pre>

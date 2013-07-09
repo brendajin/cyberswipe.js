@@ -89,7 +89,7 @@
             color: #FABD4A;
             line-height: 4em;
         }
-        .drawer {
+        .cyber-drawer {
             -webkit-overflow-scrolling: touch;
             overflow-y: auto;
             position:relative;
@@ -98,11 +98,11 @@
             height:100%;
         }
 
-        .drawer p {
+        .cyber-drawer p {
             margin-left:10px;
         }
 
-        .content {
+        .cyber-content {
             padding-bottom: 1em;
         }
         .header {
@@ -114,7 +114,7 @@
             display:none;
         }
 
-        #drag-handle {
+        #cyber-drag-handle {
             position: absolute;
             top: 0;
             right: 0;
@@ -136,7 +136,7 @@
             font-size:.4em;
         }
 
-        .transition {
+        .cyber-transition {
             -webkit-transition:all 0.25s ease-in-out;
             -moz-transition:all 0.25s ease-in-out;
             -o-transition:all 0.25s ease-in-out;
@@ -147,7 +147,7 @@
 </head>
 <body>
     <nav>
-        <div class="drawer">
+        <div class="cyber-drawer">
             <ul>
                 <li>
                     <a href="https://twitter.com/share?text=Check%20out%20#cyberswipe,%20a%20swipeable%20drawer%20nav%20#microlibrary!%20https://brendajin.github.io/cyberswipe.js/" class="twitter-share-button" data-lang="en" data-related="cyberneticlove" data-counturl="https://brendajin.github.io/cyberswipe.js/"  data-size="large">Tweet #Cyberswipe
@@ -176,7 +176,7 @@
             </ul>
 
         </div>
-        <div id="drag-handle">
+        <div id="cyber-drag-handle">
             <div toggle="home" class="icon" aria-hidden="true" data-icon="&#xe000;">
                 <span class="icon-label">Home</span>
             </div>
@@ -191,12 +191,12 @@
             </div>
         </div>
     </nav>
-    <div class="content-container">
+    <div class="cyber-content-container">
         <div class="header">
                 <h1>Cyberswipe.js</h1>
                 <h2>A Microlibrary for Swipeable Drawer Navigation</h2>
         </div>
-        <div class="content">
+        <div class="cyber-content">
             <div id="home">
                 <p>Cyberswipe gives you primary and secondary drawer elements to organize your navigation, and is targeted at touchscreens 7" and up.</p>
 
@@ -206,12 +206,12 @@
         drawerWidth: 250, // All units are in px
         handleWidth: 60,
         threshold: 50, // The threshold at which the drawer will snap open or shut
-        dragElement: document.getElementById('drag-handle'),
+        dragElement: document.getElementById('cyber-drag-handle'),
         pushContent: false, // If set to true, content will be pushed over when nav drawer opens
         nav: document.getElementsByTagName('nav')[0],
-        navContent: document.getElementsByClassName('drawer')[0],
-        contentContainer: document.getElementsByClassName('content-container')[0],
-        contentElement: document.getElementsByClassName('content')[0],
+        navContent: document.getElementsByClassName('cyber-drawer')[0],
+        contentContainer: document.getElementsByClassName('cyber-content-container')[0],
+        contentElement: document.getElementsByClassName('cyber-content')[0],
         contentMargin: 10
     });
                 </code></pre>
@@ -242,7 +242,7 @@
         background-color:#FABD4A; <em>/* your choice here */</em>
         z-index:3; <em>/* make sure this is the highest z-index on the page */</em>
     }
-    .drawer {
+    .cyber-drawer {
         -webkit-overflow-scrolling: touch;
         overflow-y: auto;
         position:relative;
@@ -250,13 +250,13 @@
         height:100%;
         color:#002E40; <em>/* your choice here */</em>
     }
-    .transition {
+    .cyber-transition {
         -webkit-transition:all 0.25s ease-in-out; <em>/* for the .open() and .close() methods */</em>
         -moz-transition:all 0.25s ease-in-out; <em>/* you can pick the timing */</em>
         -o-transition:all 0.25s ease-in-out;
         transition:all 0.25s ease-in-out;
     }
-    #drag-handle {
+    #cyber-drag-handle {
         position: absolute;
         top: 0;
         right: 0;
@@ -268,15 +268,15 @@
                 <p>Use the following structure in the between the <code>&lt;body&gt;</code> tags in your <code>index.html</code> file:
                     <pre><code>
     &lt;nav&gt;
-        &lt;div class="drawer"&gt;
+        &lt;div class="cyber-drawer"&gt;
             <em>&lt;!-- Your Navigation Drawer Contents go here --&gt;</em>
         &lt;/div&gt;
-        &lt;div id="drag-handle"&gt;
+        &lt;div id="cyber-drag-handle"&gt;
             <em>&lt;!-- Your icons, buttons, and other primary navigational elements go here --&gt;</em>
         &lt;/div&gt;
     &lt;/nav&gt;
-    &lt;div class="content-container"&gt;
-        &lt;div class="content"&gt;
+    &lt;div class="cyber-content-container"&gt;
+        &lt;div class="cyber-content"&gt;
             <em>&lt;!-- Your main page content goes here --&gt;</em>
         &lt;/div&gt;
     &lt;/div&gt;
@@ -293,7 +293,7 @@
         drawerWidth: 250, <em>// All units are in px</em>
         handleWidth: 60,
         threshold: 50, <em>// The threshold at which the drawer will snap open or shut</em>
-        dragElement: document.getElementById('drag-handle'),
+        dragElement: document.getElementById('cyber-drag-handle'),
         pushContent: false <em>// If set to true, content will be pushed over when nav drawer opens</em>
     }
                     </code></pre>
@@ -302,9 +302,9 @@
                     <pre><code> 
     {
         nav: document.getElementsByTagName('nav')[0],
-        navContent: document.getElementsByClassName('drawer')[0],
-        contentContainer: document.getElementsByClassName('content-container')[0],
-        contentElement: document.getElementsByClassName('content')[0],
+        navContent: document.getElementsByClassName('cyber-drawer')[0],
+        contentContainer: document.getElementsByClassName('cyber-content-container')[0],
+        contentElement: document.getElementsByClassName('cyber-content')[0],
         contentMargin: 10
     }
                     </code></pre>
@@ -377,8 +377,8 @@
                         <br>
                         <label>pushContent</label>
                         <select name="selectPushContent">
-                            <option value="true">true</option>
                             <option value="false">false</option>
+                            <option value="true">true</option>
                         </select>
                         <br>
                         <span class="button">Generate</span>
@@ -422,7 +422,7 @@
             mySwiper.close();        
         }
 
-        document.getElementsByClassName('content-container')[0].addEventListener('click',function(e){mySwiper.close();});
+        document.getElementsByClassName('cyber-content-container')[0].addEventListener('click',function(e){mySwiper.close();});
 
         document.getElementsByClassName('button')[0].addEventListener('click',function(e){
                 var wizardContents = '<pre><code>var myFirstCyberswipe = new Cyberswipe(';
